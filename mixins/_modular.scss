@@ -1,0 +1,26 @@
+@mixin secret-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.secret-list {@include secret-list;}
+
+@mixin clearfix {
+	zoom: 1;
+	&:before, &:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+.clearfix {@include clearfix;}
+
+@mixin reset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+}
+.reset {@include reset;}
