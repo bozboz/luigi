@@ -42,7 +42,7 @@ img[alt=""]{
 
 /**
  * Links sometimes, though not always, benefit from `title` attributes. Links
- * without are never invalid but it’s a good idea to check.
+ * without are never invalid but it's a good idea to check.
  */
 a{
     outline:5px solid yellow;
@@ -62,7 +62,7 @@ a[href*="javascript"]{
 
 
 /**
- * The `target` attribute ain’t too nice...
+ * The `target` attribute ain't too nice...
  */
 a[target]{
     outline:5px solid yellow;
@@ -81,7 +81,7 @@ ol{
 
 
 /**
- * It’s always nice to give `th`s `scope` attributes.
+ * It's always nice to give `th`s `scope` attributes.
  */
 th{
     outline:5px solid yellow;
@@ -92,7 +92,7 @@ th[scope]{
 
 
 /**
- * `tr`s as children of `table`s ain’t great, did you need a `thead`/`tbody`?
+ * `tr`s as children of `table`s ain't great, did you need a `thead`/`tbody`?
  */
 table > tr{
     outline:5px solid yellow;
