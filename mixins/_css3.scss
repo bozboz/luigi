@@ -80,12 +80,12 @@
 	zoom: 1;
 }
 
-@mixin transition($trans:all 0.5s ease) {
-	-webkit-transition: $trans;
-	-moz-transition: $trans;
-	-ms-transition: $trans;
-	-o-transition: $trans;
-	transition: $trans;
+@mixin transition($time: 0.5s, $attr: all, $effect: ease) {
+	-webkit-transition: $attr $time $effect;
+	-moz-transition: $attr $time $effect;
+	-ms-transition: $attr $time $effect;
+	-o-transition: $attr $time $effect;
+	transition: $attr $time $effect;
 }
 
 @mixin transform($trans) {
