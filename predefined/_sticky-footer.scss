@@ -1,0 +1,16 @@
+@if $sticky_footer_height {
+	html {
+		position: relative;
+		min-height: 100%;
+	}
+	body {
+		margin: 0 0 $sticky_footer_margin; /* bottom = footer height */
+	}
+	footer {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		height: $sticky_footer_height;
+		width: 100%;
+	}
+}
