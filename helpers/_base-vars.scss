@@ -3,3 +3,9 @@ $basefontsize: 12px !default;
 $basegutter: 15px !default;
 $debugmode: false !default;
 $enable-rem: false !default;
+$breakpoints: (
+    'palm' '(max-width: 480px)',
+    'lap' '(min-width: 481px) and (max-width: 1023px)',
+    'portable' '(max-width: 1023px)',
+    'desk' '(min-width: 1024px)'
+) !default;
