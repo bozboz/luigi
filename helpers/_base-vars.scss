@@ -1,10 +1,10 @@
 $basefont: Arial,sans-serif !default;
 $basefontsize: 12px !default;
 $basegutter: 15px !default;
-$debugmode: false !default;
-$enable_rem: false !default;
-$sticky_footer_height: false !default;
-$sticky_footer_margin: $sticky_footer_height !default;
+$debug-mode: false !default;
+$enable-rem: false !default;
+$sticky-footer-height: false !default;
+$sticky-footer-margin: $sticky-footer-height !default;
 $breakpoints: (
     'palm' '(max-width: 480px)',
     'lap' '(min-width: 481px) and (max-width: 1023px)',

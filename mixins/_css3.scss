@@ -43,7 +43,7 @@
 	}
 
 	background: $end; // Old browsers
-	
+
 	@if $degrees {
 		$direction: $direction + 90;
 		background: -moz-#{$gradient}-gradient(#{$direction}deg,  $start 0%, $end 100%); /* FF3.6+ */
@@ -70,15 +70,15 @@
 }
 
 
-$transition_prefix: '-webkit-' '-moz-' '-o-';
+$transition-prefix: '-webkit-' '-moz-' '-o-';
 @mixin transition-property($attr, $value) {
-	@each $prefix in $transition_prefix {
+	@each $prefix in $transition-prefix {
 		#{$prefix}transition-#{$attr}: $value;
 	}
 }
 
 @mixin transition($time: 0.5s, $attr: all, $effect: ease) {
-	@each $prefix in $transition_prefix {
+	@each $prefix in $transition-prefix {
 		#{$prefix}transition: $attr $time $effect;
 	}
 }
