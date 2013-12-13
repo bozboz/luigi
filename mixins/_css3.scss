@@ -1,7 +1,4 @@
-@mixin box-shadow($shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3)) {
-	-webkit-box-shadow: $shadow;
-	box-shadow: $shadow;
-}
+
 
 @mixin box-sizing($box: border-box) {
 	-webkit-box-sizing: $box;
@@ -21,14 +18,9 @@
 	background-clip: padding-box;
 }
 
-@mixin box-shadow($shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3), $inset: false) {
-	@if $inset {
-		-webkit-box-shadow:inset $shadow;
-		box-shadow:inset $shadow;
-	} @else {
-		-webkit-box-shadow: $shadow;
-		box-shadow: $shadow;
-	}
+@mixin box-shadow($shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3), $inset: null) {
+	-webkit-box-shadow: $inset $shadow;
+	box-shadow: $inset $shadow;
 }
 
 
