@@ -65,9 +65,6 @@
 @mixin opacity($opacity: 0.5) {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" $opacity ")";
 	filter: alpha(opacity= $opacity * 100 );
-	-webkit-opacity: $opacity / 100;
-	-moz-opacity: $opacity / 100;
-	-o-opacity: $opacity / 100;
 	opacity: $opacity / 100;
 	zoom: 1;
 }
