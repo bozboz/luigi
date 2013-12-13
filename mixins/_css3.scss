@@ -84,10 +84,13 @@ $transition_prefix: '-webkit-' '-moz-' '-o-';
 }
 
 @mixin transform($trans) {
-	-webkit-transition: $trans;
-	-moz-transition: $trans;
-	-ms-transition: $trans;
-	-o-transition: $trans;
-	transition: $trans;
+	$prefixes: '-webkit-' '-moz-' '-ms-' '-o-';
+	@each $prefix in $prefixes {
+		#{$prefix}transform: $trans;
+	}
 }
 
+@mixin bg-size($size) {
+	-webkit-background-size: $size; // Safari 3-4
+	background-size: $size; // Chrome, Firefox 4+, IE 9+, Opera, Safari 5+
+}
