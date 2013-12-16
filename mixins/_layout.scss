@@ -6,13 +6,13 @@
 	@include abs {top: $top; left: $left;}
 }
 @mixin abs-tr($top: $basegutter, $right: $basegutter) {
-	@include abs {top: $top; right: $left;}
+	@include abs {top: $top; right: $right;}
 }
 @mixin abs-bl($bottom: $basegutter, $left: $basegutter) {
-	@include abs {bottom: $top; left: $left;}
+	@include abs {bottom: $bottom; left: $left;}
 }
 @mixin abs-br($bottom: $basegutter, $right: $basegutter) {
-	@include abs {bottom: $top; right: $left;}
+	@include abs {bottom: $bottom; right: $right;}
 }
 
 @mixin columns($cols: 2, $gap: 1em) {
