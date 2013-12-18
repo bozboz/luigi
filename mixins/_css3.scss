@@ -70,7 +70,7 @@
 }
 
 
-$transition-prefix: '-webkit-' '-moz-' '-o-';
+$transition-prefix: '-webkit-' '-moz-' '-o-' '';
 @mixin transition-property($attr, $value) {
 	@each $prefix in $transition-prefix {
 		#{$prefix}transition-#{$attr}: $value;
