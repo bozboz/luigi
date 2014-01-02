@@ -6,7 +6,10 @@ All mixins are included into the main `_luigi.scss`. This is so in your `app.scs
 
 **When adding mixins to existing or new files, please ensure that they are place in alphabetical order**
 
-**Luigi** is laid out in 3 folders - **helpers**, **mixins** and **predefined**.
+**Luigi** is laid out folders categorising the library
+- [**helpers**](#helpers)
+- [**mixins**](#mixins)
+- [**predefined**](#predefined).
 
 ##Helpers
 
@@ -249,3 +252,7 @@ Output:
 		-o-transform: skew(35deg);
 		transform: skew(35deg);
 	}
+
+##Predefined
+
+Coming Soon
