@@ -25,7 +25,7 @@ The helpers folder includes:
 
 ###Base Vars
 
-*[helpers/_base-vars.scss](#helpers/_base-vars.scss)*
+*[helpers/_base-vars.scss](helpers/_base-vars.scss)*
 
 This lays out all the variables that can be overwritten throughout Luigi. Defaults are set here.
 
@@ -33,7 +33,7 @@ This lays out all the variables that can be overwritten throughout Luigi. Defaul
 
 ###Debug
 
-*[helpers/_debug.scss](#helpers/_debug.scss)*
+*[helpers/_debug.scss](helpers/_debug.scss)*
 
 This file outlines any basic problems you might have in your html. Using some advanced selectors it outlines elements with things such as alt tags missing or direct descendants of `ul`s which are not `li`s.
 
@@ -41,17 +41,17 @@ This can be enabled by:
 
 	$debug-mode: true;
 
-This originates from Inuit (see [Appendix 2.1](#1-inuit)
+This originates from Inuit (see [Appendix 2.1](#1-inuit))
 
 ###Normalize
 
-*[helpers/_normalize.scss](#helpers/_normalize.scss)*
+*[helpers/_normalize.scss](helpers/_normalize.scss)*
 
 This is a slightly modified version of [normalize.css]{http://necolas.github.io/normalize.css/} from necolas. It has `$basefont` and `$basegutter` scattered throughout.
 
 ###Print
 
-*[helpers/_print.scss](#helpers/_print.scss)*
+*[helpers/_print.scss](helpers/_print.scss)*
 
 This is a basic print stylesheet - taken from Stu Robson's sassifaction (see [Appendix 2.2](#2-sassifaction)). It applies some very basic layout modifications when printing
 
@@ -68,7 +68,7 @@ The mixins folder comprises of:
 
 ###CSS3
 
-*[mixins/_css3.scss](#mixins/_css3.scss)*
+*[mixins/_css3.scss](mixins/_css3.scss)*
 
 This file contains many mixins that require vendor prefixes to achieve what have been dubbed as **css3**.
 
@@ -301,7 +301,7 @@ Output:
 
 ###Layout
 
-*[mixins/_layout.scss](#mixins/_layout.scss)*
+*[mixins/_layout.scss](mixins/_layout.scss)*
 
 The layout mixin file contains:
 
@@ -376,7 +376,7 @@ Output:
 
 ###Modular
 
-*[mixins/_modular.scss](#mixins/_modular.scss)*
+*[mixins/_modular.scss](mixins/_modular.scss)*
 
 This file contains modular classes which can be used in the SCSS or within your HTML and, as such, do not take parameters. To see what each mixin does - view [modular.scss](mixins/_modular.scss)
 
@@ -398,7 +398,7 @@ This allows the semantic use of a `ul` and `li` without the styles.
 
 ###Pseudo
 
-*[mixins/_pseudo.scss](#mixins/_pseudo.scss)*
+*[mixins/_pseudo.scss](mixins/_pseudo.scss)*
 
 The pseudo file contains mixins which affect or add a pseudo element(s)
 
@@ -474,7 +474,7 @@ Output:
 
 ###Responsive
 
-*[mixins/_responsive.scss](#mixins/_responsive.scss)*
+*[mixins/_responsive.scss](mixins/_responsive.scss)*
 
 This contains several mixins that will aid with responsive web design
 
@@ -542,7 +542,7 @@ Output:
 
 ###Typography
 
-*[mixins/_typography.scss](#mixins/_typography.scss)*
+*[mixins/_typography.scss](mixins/_typography.scss)*
 
 Contains mixins which would affect the typography of the website
 
