@@ -1,15 +1,6 @@
-@mixin placeholder(){
-	$prefixes: ':-webkit' '-moz' ':-moz' '-ms';
-	@each $prefix in $prefixes {
-		&:#{$prefix}-input-placeholder {
-			@content;
-		}
-	}
-}
-
 // Simple SCSS mixin to create CSS triangles
-// Example: @include css-triangle ("up", 10px, #fff);
-@mixin css-triangle ($direction: down, $size: 20px, $color: #000) {
+// Example: @include css-triangle(up, 10px, #fff);
+@mixin css-triangle($direction: down, $size: 20px, $color: #000) {
 	$opposite: up;
 	@if $direction == up {
 		$direction: bottom;
@@ -30,4 +21,13 @@
 	border: $size solid transparent;
 	border-#{$direction}-color: $color;
 	border-#{$opposite}-width: 0;
+}
+
+@mixin placeholder {
+	$prefixes: ':-webkit' '-moz' ':-moz' '-ms';
+	@each $prefix in $prefixes {
+		&:#{$prefix}-input-placeholder {
+			@content;
+		}
+	}
 }

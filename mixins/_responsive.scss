@@ -1,11 +1,4 @@
-@mixin img-responsive($display: block) {
-	display: $display;
-	max-width: 100%; // Part 1: Set a maximum relative to the parent
-	height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
-}
-
-// Borrowed from https://github.com/csswizardry/csswizardry-grids
-@mixin bp($media-query){
+@mixin bp($media-query) {
 	$breakpoint-found: false;
 
 	@each $breakpoint in $breakpoints{
@@ -26,4 +19,10 @@
 			@content;
 		}
 	}
+}
+
+@mixin img-responsive($display: block) {
+	display: $display;
+	max-width: 100%; // Part 1: Set a maximum relative to the parent
+	height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
 }

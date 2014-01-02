@@ -1,17 +1,18 @@
 #Luigi
 
-Luigi is the Scss library developed by the developers at Bozboz and the rest of the world. It takes influence from the most popular of libraries and includes most of the popular mixins, plus some extra Bozboz crafted ones.
+Luigi is the Scss library developed by the developers at Bozboz and the rest of the world. It takes influence from the most popular of libraries and includes most of the popular mixins, plus some extra Bozboz crafted ones. A full list of libraries and credits can be found in the [appendix](#appendix)
 
-All mixins are included into the main `_luigi.scss`. This is so in your `app.scss` or `style.scss` you can just include '_luigi.scss' to benefit from the whole shebang.
+All mixins are included into the main `_luigi.scss`. This is so in your `app.scss` or `style.scss` you can just include `_luigi.scss` to benefit from the whole shebang.
 
 **When adding mixins to existing or new files, please ensure that they are place in alphabetical order**
 
-**Luigi** is laid out folders categorising the library
+**Luigi** is laid out folders categorising the library:
+
 - [**Helpers**](#helpers)
 - [**Mixins**](#mixins)
 - [**Predefined**](#predefined)
 
-[Full Luigi Index](#full-luigi-index)
+Alternatively, see the [Full Luigi Index](#full-luigi-index) for everything included.
 
 ##Helpers
 
@@ -24,33 +25,50 @@ The helpers folder includes:
 
 ###Base Vars
 
-This lays out all the vairables that are overwriteable throughout Luigi. Defaults are set here.
+*[helpers/_base-vars.scss](#helpers/_base-vars.scss)*
+
+This lays out all the variables that can be overwritten throughout Luigi. Defaults are set here.
+
+**Todo: Explain each base var and its purpose**
 
 ###Debug
 
-This file outlines any basic problems you might have in your html. Using some advanced selectors it outlines elements with things such as alt tags missing or direct decendants of `ul`s whoch are not `li`s.
+*[helpers/_debug.scss](#helpers/_debug.scss)*
+
+This file outlines any basic problems you might have in your html. Using some advanced selectors it outlines elements with things such as alt tags missing or direct descendants of `ul`s which are not `li`s.
 
 This can be enabled by:
 
 	$debug-mode: true;
 
-{This originates from [inuit.css](https://github.com/csswizardry/inuit.css)}
+This originates from Inuit (see [Appendix 2.1](#1-inuit)
 
 ###Normalize
+
+*[helpers/_normalize.scss](#helpers/_normalize.scss)*
 
 This is a slightly modified version of [normalize.css]{http://necolas.github.io/normalize.css/} from necolas. It has `$basefont` and `$basegutter` scattered throughout.
 
 ###Print
 
-This is a basic print stylesheet - taken from Stu Robson's [Sassifaction](https://github.com/sturobson/Sassifaction). It applies some very basic layout modifications when printing
+*[helpers/_print.scss](#helpers/_print.scss)*
+
+This is a basic print stylesheet - taken from Stu Robson's sassifaction (see [Appendix 2.2](#2-sassifaction)). It applies some very basic layout modifications when printing
 
 ##Mixins
 
 The mixins folder comprises of:
 
 - [CSS3](#css3)
+- [Layout](#layout)
+- [Modular](#modular)
+- [Pseudo](#pseudo)
+- [Responsive](#responsive)
+- [Typography](#typography)
 
 ###CSS3
+
+*[mixins/_css3.scss](#mixins/_css3.scss)*
 
 This file contains many mixins that require vendor prefixes to achieve what have been dubbed as **css3**.
 
@@ -71,6 +89,8 @@ Mixin:
 
 	bg-size($size)
 
+**$size**: The size of the background (see [CSS3 Info](http://www.css3.info/preview/background-size/) for details of how to use it)
+
 Usage:
 
 	.class {
@@ -80,8 +100,8 @@ Usage:
 Output:
 
 	.class {
-		-webkit-background-size: 100%; // Safari 3-4
-		background-size: 100%; // Chrome, Firefox 4+, IE 9+, Opera, Safari 5+
+		-webkit-background-size: 100%;
+		background-size: 100%;
 	}
 
 ####border-radius-noclip && border-radius
@@ -92,6 +112,8 @@ Mixin:
 
 	border-radius($radius)
 	border-radius-noclip($radius)
+
+**$radius**: Parameters of the required border radius
 
 Usage:
 
@@ -123,6 +145,8 @@ Mixin:
 
 	box-shadow($shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3))
 
+**$shadow**: Box shadow parameters - [CSS3 Generator](http://css3generator.com/) can be particularly helpful
+
 Usage:
 
 	.class {
@@ -143,6 +167,8 @@ Allows redefining the box-model on elements
 Mixin:
 
 	box-sizing($box: border-box)
+
+**$box**: The box model you wish the element to adopt
 
 Usage:
 
@@ -180,7 +206,7 @@ Usage:
 		@include gradient(h, #f00, #0f0);
 	}
 
-Omitting output due to large amounts of code.
+*Omitting output due to large amounts of code.- see the [mixin](mixins/_css3.scss) for more detail*
 
 ####opacity
 
@@ -243,10 +269,10 @@ Output:
 	}
 
 	.context .class {
-		-webkit-transition-duration:0.8s;
-		-moz-transition-duration:0.8s;
-		-o-transition-duration:0.8s;
-		transition-duration:0.8s
+		-webkit-transition-duration: 0.8s;
+		-moz-transition-duration: 0.8s;
+		-o-transition-duration: 0.8s;
+		transition-duration: 0.8s
 	}
 
 ####transform
@@ -273,9 +299,349 @@ Output:
 		transform: skew(35deg);
 	}
 
+###Layout
+
+*[mixins/_layout.scss](#mixins/_layout.scss)*
+
+The layout mixin file contains:
+
+- [abs](#abs)
+- [columns](#columns)
+
+####abs
+
+The `abs` mixin has server variants allowing for quick absolute positioning.
+
+Mixin:
+
+	abs-tl($top: $basegutter, $left: $basegutter)
+	abs-tr($top: $basegutter, $right: $basegutter)
+	abs-bl($bottom: $basegutter, $left: $basegutter)
+	abs-br($bottom: $basegutter, $right: $basegutter)
+
+**$top/$bottom/$left/$right**: Where you want the element positioned (defaults to $basegutter)
+
+Usage:
+
+	.class {
+		@include abs-tl();
+	}
+
+	.class-alt {
+		@include abs-br(20px, 5%);
+	}
+
+Output:
+
+	.class {
+		position: absolute;
+		top: 15px;
+		left: 15px;
+	}
+
+	.class-alt {
+		position: absolute;
+		bottom: 20px;
+		left: 5%;
+	}
+
+####columns
+
+Columns is a simple mixin which allows the use of css3 columns
+
+Mixin:
+
+	columns($cols: 2, $gap: $basegutter)
+
+**$cols**: Number of columns you want the text split into
+
+**$gap**: The gap between the columns
+
+Usage:
+
+	.class {
+		@include columns(3, 10px);
+	}
+
+Output:
+
+	.class {
+		-webkit-column-count: 3;
+		-moz-column-count: 3;
+		column-count: 3;
+		-webkit-column-gap: 10px;
+		-moz-column-gap: 10px;
+		column-gap: 10px;
+	}
+
+###Modular
+
+*[mixins/_modular.scss](#mixins/_modular.scss)*
+
+This file contains modular classes which can be used in the SCSS or within your HTML and, as such, do not take parameters. To see what each mixin does - view [modular.scss](mixins/_modular.scss)
+
+- [clearfix](#clearfix)
+- [reset](#reset)
+- [secret-list](#clearfix)
+
+####clearfix
+
+This adopts the clearfix hack as described by [Chris Coyier](http://css-tricks.com/snippets/css/clear-fix/)
+
+####reset
+
+This completely resets an element and strips it of its margin, padding, border and background.
+
+####secret-list
+
+This allows the semantic use of a `ul` and `li` without the styles.
+
+###Pseudo
+
+*[mixins/_pseudo.scss](#mixins/_pseudo.scss)*
+
+The pseudo file contains mixins which affect or add a pseudo element(s)
+
+- [css-triangle](#css-triangle)
+- [placeholder](#placeholder)
+
+####css-triangle
+
+This makes the element a css triangle - for use as a pointer with the `:after` or `:before` pseudo element
+
+Mixin:
+
+	css-triangle($direction: down, $size: 20px, $color: #000)
+
+**$direction**: what direction the arrow points (up/down/left/right)
+
+**$size**: The size of the triangle
+
+**$color**: What colour the triangle is
+
+Usage:
+
+	.class:after {
+		@include css-triangle(up, 10px, #fff);
+		content: '';
+	}
+
+Output:
+
+	.class:after {
+		width: 0;
+		height: 0;
+		border: 10px solid transparent;
+		border-bottom-color: #fff;
+		border-top-width: 0;
+		content: '';
+	}
+
+####placeholder
+
+For styling the placeholder text in a form field
+
+Mixin:
+
+	placeholder {
+		@content
+	}
+
+**@content**: The styling for the input
+
+Usage:
+
+	.class {
+		@include placeholder {
+			color: #666;
+		}
+	}
+
+Output:
+
+	.class::-webkit-input-placeholder{
+		color: #666;
+	}
+	.class:-moz-input-placeholder{
+		color: #666;
+	}
+	.class::-moz-input-placeholder{
+		color: #666;
+	}
+	.class:-ms-input-placeholder{
+		color: #666;
+	}
+
+###Responsive
+
+*[mixins/_responsive.scss](#mixins/_responsive.scss)*
+
+This contains several mixins that will aid with responsive web design
+
+- [bp](#bp)
+- [img-responsive](#img-responsive)
+
+####bp
+
+This is helpful when using the sass bubbling technique and allows (with the help of the `$breakpoints` variable) a definition of user-friendly sizes
+
+Adapted from CSS Wizarry Grids (see [Appendix 2.3](#3-grids)
+
+Mixin:
+
+	bp($media-query) {
+		@content
+	}
+
+**$media-query**: User-friendly name or px based (e.g. `palm` or `(max-width: 480px)`)
+**@content**: The declarations to affect the element
+
+Usage:
+
+	.class {
+		@include bp(desktop) {
+			width: 50%;
+		}
+		width: 25%
+	}
+
+Output:
+
+	.class {
+		width: 25%;
+	}
+	@media only screen and (max-width: 1600px){
+		.class {
+			width:50%;
+		}
+	}
+
+####img-responsive
+
+This helps make the image responsive
+
+Mixin:
+
+	img-responsive($display: block);
+
+**$display**: What you want the display type to be
+
+Usage:
+
+	.class {
+		@include img-responsive();
+	}
+
+Output:
+
+	.class {
+		display: $display;
+		max-width: 100%;
+		height: auto;
+	}
+
+###Typography
+
+*[mixins/_typography.scss](#mixins/_typography.scss)*
+
+Contains mixins which would affect the typography of the website
+
+- [font](#font)
+- [font-size](#font-size)
+- [hide-text](#hide-text)
+
+####font
+
+Allows quick setting of some default font families
+
+Mixin:
+
+	font($type)
+
+**$type**: What font you want. Can be hell (Helvtica Neue), sans (Arial), serif (Georgia) or monospace (Monaco)
+
+Usage:
+
+	.class {
+		@include font(monospace)
+	}
+
+Output:
+
+	.class {
+		font-family: "Monaco", "Courier New", monospace;
+	}
+
+####font-size
+
+Allows the use of `rem` for font sizes
+
+Mixin:
+
+	font-size($size)
+
+**$size**: The size of your font in px
+
+Usage:
+
+	$enable-rem: true;
+	.class {
+		@include font-size(16px);
+	}
+
+Output:
+
+	html {
+		font-size: 62.5%;
+	}
+
+	.class {
+		font-size: 16px;
+		font-size: 1rem;
+	}
+
+####hide-text
+
+An alternative way of hiding text (e.g. if you have an image as a background)
+
+Mixin:
+
+	hide-text
+
+Usage:
+
+	.class {
+		@include hide-text;
+	}
+
+Output:
+
+	.class {
+		font: 0/0 a;
+		text-shadow: none;
+		color: transparent;
+	}
+
 ##Predefined
 
-Coming Soon
+**Todo: Explain predefined files**
+
+##Appendix
+
+###1. Authors
+
+[Luigi's authors and contributors](https://github.com/bozboz/luigi/graphs/contributors)
+
+###2. Other Resources
+
+####1. Inuit
+[inuit.css](https://github.com/csswizardry/inuit.css)
+
+####2. Sassifaction
+[sassifaction](https://github.com/sturobson/Sassifaction)
+
+####3. Grids
+[csswizardry-grids](https://github.com/csswizardry/csswizardry-grids)
 
 ##Full Luigi Index
 
@@ -294,4 +660,24 @@ Coming Soon
 		- [opacity](#opacity)
 		- [transition-property && transition](#transition-property--transition)
 		- [transform](#transform)
+	- [Layout](#layout)
+		- [abs](#abs)
+		- [columns](#columns)
+	- [Modular](#modular)
+		- [clearfix](#clearfix)
+		- [reset](#reset)
+		- [secret-list](#clearfix)
+	- [Pseudo](#pseudo)
+		- [css-triangle](#css-triangle)
+		- [placeholder](#placeholder)
+	- [Responsive](#responsive)
+		- [bp](#bp)
+		- [img-responsive](#img-responsive)
+	- [Typography](#typography)
+		- [font](#font)
+		- [font-size](#font-size)
+		- [hide-text](#hide-text)
 - [**Predefined**](#predefined)
+- [**Appendix**](#appendix)
+	- [1. Authors](#a-authors)
+	- [2. Other Resources](#b-other-resources)

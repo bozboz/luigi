@@ -1,25 +1,32 @@
 @mixin abs {
 	position: absolute;
-	@content;
 }
 @mixin abs-tl($top: $basegutter, $left: $basegutter) {
-	@include abs {top: $top; left: $left;}
+	@include abs;
+	top: $top;
+	left: $left;
 }
 @mixin abs-tr($top: $basegutter, $right: $basegutter) {
-	@include abs {top: $top; right: $right;}
+	@include abs;
+	top: $top;
+	right: $right;
 }
 @mixin abs-bl($bottom: $basegutter, $left: $basegutter) {
-	@include abs {bottom: $bottom; left: $left;}
+	@include abs;
+	bottom: $bottom;
+	left: $left;
 }
 @mixin abs-br($bottom: $basegutter, $right: $basegutter) {
-	@include abs {bottom: $bottom; right: $right;}
+	@include abs;
+	bottom: $bottom;
+	right: $right;
 }
 
-@mixin columns($cols: 2, $gap: 1em) {
-	-moz-column-count: $cols;
+@mixin columns($cols: 2, $gap: $basegutter) {
 	-webkit-column-count: $cols;
+	-moz-column-count: $cols;
 	column-count: $cols;
-	-moz-column-gap: $gap;
 	-webkit-column-gap: $gap;
+	-moz-column-gap: $gap;
 	column-gap: $gap;
 }

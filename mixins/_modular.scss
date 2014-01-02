@@ -1,10 +1,3 @@
-@mixin secret-list {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-.secret-list {@include secret-list;}
-
 @mixin clearfix {
 	zoom: 1;
 	&:before, &:after {
@@ -24,3 +17,10 @@
 	background: none;
 }
 .reset {@include reset;}
+
+@mixin secret-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.secret-list {@include secret-list;}

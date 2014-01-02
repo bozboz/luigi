@@ -13,7 +13,9 @@
 }
 
 @if $enable-rem {
-	html {font-size: 62.5%;}
+	html {
+		font-size: 62.5%;
+	}
 }
 @function calculate-rem($size) {
 	$rem-size: $size / 16px;
