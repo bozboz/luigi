@@ -1,5 +1,9 @@
 #Changelog
 
+##0.4.1 (2014-01-02)
+
+- Adding table of contents to each section on changelog
+
 ##0.4.0 (2014-01-02)
 - Addition of **changelog.md**
 - Addition of global box-sizing attribute (`predefined/box-sizing`) - can be turned off with **$global-box-sizing: false;**

@@ -7,13 +7,20 @@ All mixins are included into the main `_luigi.scss`. This is so in your `app.scs
 **When adding mixins to existing or new files, please ensure that they are place in alphabetical order**
 
 **Luigi** is laid out folders categorising the library
-- [**helpers**](#helpers)
-- [**mixins**](#mixins)
-- [**predefined**](#predefined).
+- [**Helpers**](#helpers)
+- [**Mixins**](#mixins)
+- [**Predefined**](#predefined)
+
+[Full Luigi Index](#full-luigi-index)
 
 ##Helpers
 
 The helpers folder includes:
+
+- [Base Vars](#base-vars)
+- [Debug](#debug)
+- [Normalize](#normalize)
+- [Print](#print)
 
 ###Base Vars
 
@@ -39,9 +46,22 @@ This is a basic print stylesheet - taken from Stu Robson's [Sassifaction](https:
 
 ##Mixins
 
+The mixins folder comprises of:
+
+- [CSS3](#css3)
+
 ###CSS3
 
 This file contains many mixins that require vendor prefixes to achieve what have been dubbed as **css3**.
+
+- [bg-size](#bg-size)
+- [border-radius-noclip && border-radius](#border-radius-noclip--border-radius)
+- [box-shadow](#box-shadow)
+- [box-sizing](#box-sizing)
+- [gradient](#gradient)
+- [opacity](#opacity)
+- [transition-property && transition](#transition-property--transition)
+- [transform](#transform)
 
 ####bg-size
 
@@ -256,3 +276,22 @@ Output:
 ##Predefined
 
 Coming Soon
+
+##Full Luigi Index
+
+- [**Helpers**](#helpers)
+	- [Base Vars](#base-vars)
+	- [Debug](#debug)
+	- [Normalize](#normalize)
+	- [Print](#print)
+- [**Mixins**](#mixins)
+	- [CSS3](#css3)
+		- [bg-size](#bg-size)
+		- [border-radius-noclip && border-radius](#border-radius-noclip--border-radius)
+		- [box-shadow](#box-shadow)
+		- [box-sizing](#box-sizing)
+		- [gradient](#gradient)
+		- [opacity](#opacity)
+		- [transition-property && transition](#transition-property--transition)
+		- [transform](#transform)
+- [**Predefined**](#predefined)
