@@ -319,7 +319,7 @@ Mixin:
 	abs-bl($bottom: $basegutter, $left: $basegutter)
 	abs-br($bottom: $basegutter, $right: $basegutter)
 
-**$top/$bottom/$left/$right**: Where you want the element positioned (defaults to $basegutter)
+**$top/$bottom/$left/$right**: Where you want the element positioned (defaults to `$basegutter`)
 
 Usage:
 
@@ -382,7 +382,7 @@ This file contains modular classes which can be used in the SCSS or within your 
 
 - [clearfix](#clearfix)
 - [reset](#reset)
-- [secret-list](#clearfix)
+- [secret-list](#secret-list)
 
 ####clearfix
 
@@ -485,7 +485,7 @@ This contains several mixins that will aid with responsive web design
 
 This is helpful when using the sass bubbling technique and allows (with the help of the `$breakpoints` variable) a definition of user-friendly sizes
 
-Adapted from CSS Wizarry Grids (see [Appendix 2.3](#3-grids)
+Adapted from CSS Wizarry Grids (see [Appendix 2.3](#3-grids))
 
 Mixin:
 
@@ -494,6 +494,7 @@ Mixin:
 	}
 
 **$media-query**: User-friendly name or px based (e.g. `palm` or `(max-width: 480px)`)
+
 **@content**: The declarations to affect the element
 
 Usage:
@@ -535,7 +536,7 @@ Usage:
 Output:
 
 	.class {
-		display: $display;
+		display: block;
 		max-width: 100%;
 		height: auto;
 	}
@@ -666,7 +667,7 @@ Output:
 	- [Modular](#modular)
 		- [clearfix](#clearfix)
 		- [reset](#reset)
-		- [secret-list](#clearfix)
+		- [secret-list](#secret-list)
 	- [Pseudo](#pseudo)
 		- [css-triangle](#css-triangle)
 		- [placeholder](#placeholder)
@@ -679,5 +680,5 @@ Output:
 		- [hide-text](#hide-text)
 - [**Predefined**](#predefined)
 - [**Appendix**](#appendix)
-	- [1. Authors](#a-authors)
-	- [2. Other Resources](#b-other-resources)
+	- [1. Authors](#1-authors)
+	- [2. Other Resources](#2-other-resources)
