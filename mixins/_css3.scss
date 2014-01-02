@@ -1,9 +1,6 @@
-
-
-@mixin box-sizing($box: border-box) {
-	-webkit-box-sizing: $box;
-	-moz-box-sizing: $box;
-	box-sizing: $box;
+@mixin bg-size($size) {
+	-webkit-background-size: $size; // Safari 3-4
+	background-size: $size; // Chrome, Firefox 4+, IE 9+, Opera, Safari 5+
 }
 
 @mixin border-radius-noclip($radius) {
@@ -18,11 +15,16 @@
 	background-clip: padding-box;
 }
 
-@mixin box-shadow($shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3), $inset: null) {
-	-webkit-box-shadow: $inset $shadow;
-	box-shadow: $inset $shadow;
+@mixin box-shadow($shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3)) {
+	-webkit-box-shadow: $shadow;
+	box-shadow: $shadow;
 }
 
+@mixin box-sizing($box: border-box) {
+	-webkit-box-sizing: $box;
+	-moz-box-sizing: $box;
+	box-sizing: $box;
+}
 
 // Gradient mixin for vertical, horizonal and diagonal
 // Usage:
@@ -45,7 +47,7 @@
 	background: $end; // Old browsers
 
 	@if $degrees {
-		$direction: $direction + 90;
+		$direction: $direction + 90; // When doing degrees all browsers start at 90, except the w3c spec
 		background: -moz-#{$gradient}-gradient(#{$direction}deg,  $start 0%, $end 100%); /* FF3.6+ */
 		background: -webkit-#{$gradient}-gradient(#{$direction}deg,  $start 0%,$end 100%); /* Chrome10+,Safari5.1+ */
 		background: -o-#{$gradient}-gradient(#{$direction}deg,  $start 0%,$end 100%); /* Opera 11.10+ */
@@ -62,9 +64,9 @@
 	}
 }
 
-@mixin opacity($opacity: 0.5) {
+@mixin opacity($opacity: 50) {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" $opacity ")";
-	filter: alpha(opacity= $opacity * 100 );
+	filter: alpha(opacity=$opacity);
 	opacity: $opacity / 100;
 	zoom: 1;
 }
@@ -79,18 +81,13 @@ $transition-prefix: '-webkit-' '-moz-' '-o-' '';
 
 @mixin transition($time: 0.5s, $attr: all, $effect: ease) {
 	@each $prefix in $transition-prefix {
-		#{$prefix}transition: $attr $time $effect;
+		#{$prefix}transition: $time $attr $effect;
 	}
 }
 
 @mixin transform($trans) {
-	$prefixes: '-webkit-' '-moz-' '-ms-' '-o-';
+	$prefixes: '-webkit-' '-moz-' '-ms-' '-o-' '';
 	@each $prefix in $prefixes {
 		#{$prefix}transform: $trans;
 	}
-}
-
-@mixin bg-size($size) {
-	-webkit-background-size: $size; // Safari 3-4
-	background-size: $size; // Chrome, Firefox 4+, IE 9+, Opera, Safari 5+
 }
