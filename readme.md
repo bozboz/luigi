@@ -27,9 +27,45 @@ The helpers folder includes:
 
 *[helpers/_base-vars.scss](helpers/_base-vars.scss)*
 
-This lays out all the variables that can be overwritten throughout Luigi. Defaults are set here.
+This lays out all the variables that can be overwritten throughout Luigi. Defaults are set here:
 
-**Todo: Explain each base var and its purpose**
+	$basefont: Arial,sans-serif !default;
+
+This sets the body and all inputs to the declared font
+
+	$basefontsize: 12px !default;
+
+The default font size for the website
+
+	$basegutter: 15px !default;
+
+The default gutter - this is used as the margin bottom for things such as `<p>` and headings
+
+	$debug-mode: false !default;
+
+Whether or not debug mode is enabled (see information about [Debug](#debug))
+
+	$enable-rem: false !default;
+
+Whether the site is using rems for its font size (see the [font-size](#font-size) mixin)
+
+	$global-box-sizing: true !default;
+
+This determines whether the site uses global `border-box` as its box model (see the [Box Sizing](#box-sizing) file)
+
+	$sticky-footer-height: false !default;
+	$sticky-footer-margin: $sticky-footer-height !default;
+
+These are for the sticky footer predefined file - read about the [Sticky Footer](#sticky-footer).
+
+	$breakpoints: (
+	    'palm' '(max-width: 480px)',
+	    'lap' '(min-width: 481px) and (max-width: 1023px)',
+	    'portable' '(max-width: 1023px)',
+	    'desk' '(min-width: 1024px)'
+	) !default;
+
+This is the default media quiery breakpoints array for use with the [bp](#bp) mixin.
 
 ###Debug
 
@@ -625,7 +661,30 @@ Output:
 
 ##Predefined
 
-**Todo: Explain predefined files**
+The predefined folder contains blocks of CSS which have a function - almost like a library of tricks.
+
+- [Box Sizing](#box-sizing)
+- [Sticky Footer](#sticky-footer)
+
+###Box Sizing
+
+This is the global box sizing, which gives every element a box model of `border-box`
+
+This is automatically turned on in Luigi, but can be turned off by adding the following to your variables file:
+
+	$global-box-sizing: false;
+
+###Sticky Footer
+
+This is the code to have a sticky footer (see [Appendix 2.4](#4-sticky-footer)) on your website.
+
+Usage:
+
+	$sticky-footer-height; 100px; // The height of your footer
+
+If the margin on the body needs to be more or less than the height of the footer, a second variable can be declared:
+
+	$sticky-footer-margin: 120px;
 
 ##Appendix
 
@@ -643,6 +702,9 @@ Output:
 
 ####3. Grids
 [csswizardry-grids](https://github.com/csswizardry/csswizardry-grids)
+
+####4. Sticky Footer
+[Modern Clean CSS "Sticky Footer"](http://mystrd.at/modern-clean-css-sticky-footer/)
 
 ##Full Luigi Index
 
@@ -679,6 +741,8 @@ Output:
 		- [font-size](#font-size)
 		- [hide-text](#hide-text)
 - [**Predefined**](#predefined)
+	- [Box Sizing](#box-sizing)
+	- [Sticky Footer](#sticky-footer)
 - [**Appendix**](#appendix)
 	- [1. Authors](#1-authors)
 	- [2. Other Resources](#2-other-resources)
