@@ -1,11 +1,13 @@
 #Changelog
 
-##0.4.1 (2014-01-02)
+##1.0.0 (2014-01-02)
 
 - Adding table of contents to each section on changelog
 - Adding more docs to changelog (finishing Mixins folder)
 - Re-ordering some files to be alphabetical
 - Adding base var descriptions to the readme
+- Changing `$basefont` et al to use hyphens to fit with conventions
+- Ordering variables to be alphabetical
 
 ##0.4.0 (2014-01-02)
 - Addition of **changelog.md**

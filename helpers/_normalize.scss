@@ -67,7 +67,7 @@ template {
  */
 
 html {
-    font-family: $basefont; /* 1 */
+    font-family: $base-font; /* 1 */
     -ms-text-size-adjust: 100%; /* 2 */
     -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -120,7 +120,7 @@ a:hover {
 
 h1 {
     font-size: 22px;
-    margin: 0 0 $basegutter;
+    margin: 0 0 $base-gutter;
 }
 
 /**
@@ -176,7 +176,7 @@ kbd,
 pre,
 samp {
     font-family: monospace, serif;
-    font-size: $basefontsize;
+    font-size: $base-font-size;
 }
 
 /**
@@ -200,7 +200,7 @@ q {
  */
 
 small {
-    font-size: ($basefontsize - 2px);
+    font-size: ($base-font-size - 2px);
 }
 
 /**
@@ -209,7 +209,7 @@ small {
 
 sub,
 sup {
-    font-size: ($basefontsize - 2px);
+    font-size: ($base-font-size - 2px);
     line-height: 0;
     position: relative;
     vertical-align: baseline;
@@ -266,7 +266,7 @@ figure {
 fieldset {
     border: 1px solid #c0c0c0;
     margin: 0 2px;
-    padding: $basegutter;
+    padding: $base-gutter;
 }
 
 /**
@@ -290,7 +290,7 @@ input,
 select,
 textarea {
     font-family: inherit; /* 1 */
-    font-size: $basefontsize; /* 2 */
+    font-size: $base-font-size; /* 2 */
     margin: 0; /* 3 */
 }
 

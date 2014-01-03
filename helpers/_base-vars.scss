@@ -1,13 +1,6 @@
-$basefont: Arial,sans-serif !default;
-$basefontsize: 12px !default;
-$basegutter: 15px !default;
-
-$debug-mode: false !default;
-$enable-rem: false !default;
-$global-box-sizing: true !default;
-
-$sticky-footer-height: false !default;
-$sticky-footer-margin: $sticky-footer-height !default;
+$base-font: Arial,sans-serif !default;
+$base-font-size: 12px !default;
+$base-gutter: 15px !default;
 
 $breakpoints: (
     'palm' '(max-width: 480px)',
@@ -15,3 +8,10 @@ $breakpoints: (
     'portable' '(max-width: 1023px)',
     'desk' '(min-width: 1024px)'
 ) !default;
+
+$debug-mode: false !default;
+$enable-rem: false !default;
+$global-box-sizing: true !default;
+
+$sticky-footer-height: false !default;
+$sticky-footer-margin: $sticky-footer-height !default;

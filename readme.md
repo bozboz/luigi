@@ -1,10 +1,12 @@
 #Luigi
 
+*Jump to the [index](#index) to everything that is included.*
+
 Luigi is the Scss library developed by the developers at Bozboz and the rest of the world. It takes influence from the most popular of libraries and includes most of the popular mixins, plus some extra Bozboz crafted ones. A full list of libraries and credits can be found in the [appendix](#appendix)
 
 All mixins are included into the main `_luigi.scss`. This is so in your `app.scss` or `style.scss` you can just include `_luigi.scss` to benefit from the whole shebang.
 
-**When adding mixins to existing or new files, please ensure that they are place in alphabetical order**
+**When adding mixins to existing or new files, please ensure that they are placed in alphabetical order within the file**
 
 **Luigi** is laid out folders categorising the library:
 
@@ -12,11 +14,11 @@ All mixins are included into the main `_luigi.scss`. This is so in your `app.scs
 - [**Mixins**](#mixins)
 - [**Predefined**](#predefined)
 
-Alternatively, see the [Full Luigi Index](#full-luigi-index) for everything included.
+Alternatively, see the **[Full Luigi Index](#index)** for everything included.
 
 ##Helpers
 
-The helpers folder includes:
+The helpers folder includes the following files:
 
 - [Base Vars](#base-vars)
 - [Debug](#debug)
@@ -29,17 +31,26 @@ The helpers folder includes:
 
 This lays out all the variables that can be overwritten throughout Luigi. Defaults are set here:
 
-	$basefont: Arial,sans-serif !default;
+	$base-font: Arial,sans-serif !default;
 
 This sets the body and all inputs to the declared font
 
-	$basefontsize: 12px !default;
+	$base-font-size: 12px !default;
 
 The default font size for the website
 
-	$basegutter: 15px !default;
+	$base-gutter: 15px !default;
 
 The default gutter - this is used as the margin bottom for things such as `<p>` and headings
+
+	$breakpoints: (
+	    'palm' '(max-width: 480px)',
+	    'lap' '(min-width: 481px) and (max-width: 1023px)',
+	    'portable' '(max-width: 1023px)',
+	    'desk' '(min-width: 1024px)'
+	) !default;
+
+This is the default media quiery breakpoints array for use with the [bp](#bp) mixin.
 
 	$debug-mode: false !default;
 
@@ -58,15 +69,6 @@ This determines whether the site uses global `border-box` as its box model (see 
 
 These are for the sticky footer predefined file - read about the [Sticky Footer](#sticky-footer).
 
-	$breakpoints: (
-	    'palm' '(max-width: 480px)',
-	    'lap' '(min-width: 481px) and (max-width: 1023px)',
-	    'portable' '(max-width: 1023px)',
-	    'desk' '(min-width: 1024px)'
-	) !default;
-
-This is the default media quiery breakpoints array for use with the [bp](#bp) mixin.
-
 ###Debug
 
 *[helpers/_debug.scss](helpers/_debug.scss)*
@@ -83,13 +85,13 @@ This originates from Inuit (see [Appendix 2.1](#1-inuit))
 
 *[helpers/_normalize.scss](helpers/_normalize.scss)*
 
-This is a slightly modified version of [normalize.css]{http://necolas.github.io/normalize.css/} from necolas. It has `$basefont` and `$basegutter` scattered throughout.
+This is a slightly modified version of normalize from necolas (see [Appendix 2.2](#2-normalize)). It has `$base-font` and `$base-gutter` scattered throughout.
 
 ###Print
 
 *[helpers/_print.scss](helpers/_print.scss)*
 
-This is a basic print stylesheet - taken from Stu Robson's sassifaction (see [Appendix 2.2](#2-sassifaction)). It applies some very basic layout modifications when printing
+This is a basic print stylesheet - taken from Stu Robson's sassifaction (see [Appendix 2.3](#3-sassifaction)). It applies some very basic layout modifications when printing
 
 ##Mixins
 
@@ -350,12 +352,12 @@ The `abs` mixin has server variants allowing for quick absolute positioning.
 
 Mixin:
 
-	abs-tl($top: $basegutter, $left: $basegutter)
-	abs-tr($top: $basegutter, $right: $basegutter)
-	abs-bl($bottom: $basegutter, $left: $basegutter)
-	abs-br($bottom: $basegutter, $right: $basegutter)
+	abs-tl($top: $base-gutter, $left: $base-gutter)
+	abs-tr($top: $base-gutter, $right: $base-gutter)
+	abs-bl($bottom: $base-gutter, $left: $base-gutter)
+	abs-br($bottom: $base-gutter, $right: $base-gutter)
 
-**$top/$bottom/$left/$right**: Where you want the element positioned (defaults to `$basegutter`)
+**$top/$bottom/$left/$right**: Where you want the element positioned (defaults to `$base-gutter`)
 
 Usage:
 
@@ -387,7 +389,7 @@ Columns is a simple mixin which allows the use of css3 columns
 
 Mixin:
 
-	columns($cols: 2, $gap: $basegutter)
+	columns($cols: 2, $gap: $base-gutter)
 
 **$cols**: Number of columns you want the text split into
 
@@ -521,7 +523,7 @@ This contains several mixins that will aid with responsive web design
 
 This is helpful when using the sass bubbling technique and allows (with the help of the `$breakpoints` variable) a definition of user-friendly sizes
 
-Adapted from CSS Wizarry Grids (see [Appendix 2.3](#3-grids))
+Adapted from CSS Wizarry Grids (see [Appendix 2.4](#4-grids))
 
 Mixin:
 
@@ -680,7 +682,7 @@ This is automatically turned on in Luigi, but can be turned off by adding the fo
 
 *[predefined/_sticky-footer.scss](predefined/_sticky-footer.scss)*
 
-This is the code to have a sticky footer (see [Appendix 2.4](#4-sticky-footer)) on your website.
+This is the code to have a sticky footer (see [Appendix 2.5](#5-sticky-footer)) on your website.
 
 Usage:
 
@@ -701,16 +703,27 @@ If the margin on the body needs to be more or less than the height of the footer
 ####1. Inuit
 [inuit.css](https://github.com/csswizardry/inuit.css)
 
-####2. Sassifaction
+####2. Normalize
+[normalize.css](http://necolas.github.io/normalize.css/)
+
+####3. Sassifaction
 [sassifaction](https://github.com/sturobson/Sassifaction)
 
-####3. Grids
+####4. Grids
 [csswizardry-grids](https://github.com/csswizardry/csswizardry-grids)
 
-####4. Sticky Footer
+####5. Sticky Footer
 [Modern Clean CSS "Sticky Footer"](http://mystrd.at/modern-clean-css-sticky-footer/)
 
-##Full Luigi Index
+###3. Inspiration
+
+ - [Boss](https://github.com/bozboz/boss/)
+ - [Preboot.less](http://markdotto.com/bootstrap)
+ - [Clearless](https://github.com/clearleft/clearless)
+ - [Triangle Less](https://github.com/stijnj/less-triangle)
+ - [Bootstrap](https://github.com/twbs/bootstrap)
+
+##Index
 
 - [**Helpers**](#helpers)
 	- [Base Vars](#base-vars)
@@ -750,3 +763,4 @@ If the margin on the body needs to be more or less than the height of the footer
 - [**Appendix**](#appendix)
 	- [1. Authors](#1-authors)
 	- [2. Other Resources](#2-other-resources)
+	- [3. Inspiration](#2-inspiration)
