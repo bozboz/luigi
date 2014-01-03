@@ -668,6 +668,8 @@ The predefined folder contains blocks of CSS which have a function - almost like
 
 ###Box Sizing
 
+*[predefined/_box-sizing.scss](predefined/_box-sizing.scss)*
+
 This is the global box sizing, which gives every element a box model of `border-box`
 
 This is automatically turned on in Luigi, but can be turned off by adding the following to your variables file:
@@ -675,6 +677,8 @@ This is automatically turned on in Luigi, but can be turned off by adding the fo
 	$global-box-sizing: false;
 
 ###Sticky Footer
+
+*[predefined/_sticky-footer.scss](predefined/_sticky-footer.scss)*
 
 This is the code to have a sticky footer (see [Appendix 2.4](#4-sticky-footer)) on your website.
 
