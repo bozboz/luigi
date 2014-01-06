@@ -12,6 +12,26 @@
 
 }
 
+@mixin font-face($font-name, $file, $svg-font-name: false, $weight: 100, $style: normal) {
+	@font-face {
+		$fonts: url('#{$file}.eot?#iefix') format('embedded-opentype'), url('#{$file}.woff') format('woff'), url('#{$file}.ttf')  format('truetype');
+		@if($svg-font-name) {
+			$fonts: $fonts, url('#{$file}.svg##{$svg-font-name}') format('svg');
+		}
+
+		font-family: quote($font-name);
+		src: url('#{$file}.eot');
+		src: $fonts;
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+
+@mixin font-optimize($kerning: 0, $rendering: optimizeLegibility){
+	letter-spacing: $kerning;
+	text-rendering: $rendering;
+}
+
 @if $enable-rem {
 	html {
 		font-size: 62.5%;

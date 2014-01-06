@@ -72,6 +72,12 @@
 }
 
 
+@mixin transition($time: 0.5s, $attr: all, $effect: ease) {
+	@each $prefix in $transition-prefix {
+		#{$prefix}transition: $time $attr $effect;
+	}
+}
+
 $transition-prefix: '-webkit-' '-moz-' '-o-' '';
 @mixin transition-property($attr, $value) {
 	@each $prefix in $transition-prefix {
@@ -79,15 +85,16 @@ $transition-prefix: '-webkit-' '-moz-' '-o-' '';
 	}
 }
 
-@mixin transition($time: 0.5s, $attr: all, $effect: ease) {
-	@each $prefix in $transition-prefix {
-		#{$prefix}transition: $time $attr $effect;
-	}
-}
-
 @mixin transform($trans) {
 	$prefixes: '-webkit-' '-moz-' '-ms-' '-o-' '';
 	@each $prefix in $prefixes {
 		#{$prefix}transform: $trans;
+	}
+}
+
+$transform-prefix: '-webkit-' '-moz-' '-o-' '-ms-' '';
+@mixin transform-property($attr, $value) {
+	@each $prefix in $transition-prefix {
+		#{$prefix}transition-#{$attr}: #{$prefix}$value;
 	}
 }

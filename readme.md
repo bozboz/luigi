@@ -116,8 +116,8 @@ This file contains many mixins that require vendor prefixes to achieve what have
 - [box-sizing](#box-sizing)
 - [gradient](#gradient)
 - [opacity](#opacity)
-- [transition-property && transition](#transition-property--transition)
-- [transform](#transform)
+- [transition && transition-property](#transition--transition-property)
+- [transform && transform-property](#transform--transform-property)
 
 ####bg-size
 
@@ -271,14 +271,14 @@ Output:
 		zoom: 1;
 	}
 
-####transition-property && transition
+####transition && transition-property
 
 This handles transitions and being able to override specific transition properties
 
 Mixins:
 
-	transition-property($attr, $value)
 	transition($time: 0.5s, $attr: all, $effect: ease)
+	transition-property($attr, $value)
 
 **$time**: How long the animation lasts
 
@@ -313,18 +313,30 @@ Output:
 		transition-duration: 0.8s
 	}
 
-####transform
+####transform && transform-property
 
-Allowing transformations to be used easily
+Much like the transition one, this allows transformations to be used easily
 
 Mixin:
 
 	transform($trans)
+	transform-property($attr, $value)
+
+**$trans**: The transform value
+
+**$attr**: The transform attribute to specifically target
+
+**$value**: The value for the specific attribute
 
 Usage:
 
 	.class {
 		@include transform(skew(35deg));
+	}
+
+	.context .class {
+		$attributes: transform, opacity;
+		@include transform-property(property, $attributes);
 	}
 
 Output:
@@ -335,6 +347,13 @@ Output:
 		-ms-transform: skew(35deg);
 		-o-transform: skew(35deg);
 		transform: skew(35deg);
+	}
+
+	.context .class {
+		-webkit-transition-property: -webkit-transform, opacity;
+		-moz-transition-property: -moz-transform, opacity;
+		-o-transition-property: -o-transform, opacity;
+		transition-property: transform, opacity
 	}
 
 ###Layout
@@ -586,6 +605,8 @@ Output:
 Contains mixins which would affect the typography of the website
 
 - [font](#font)
+- [font-face](#font-face)
+- [font-optimize](#font-optimize)
 - [font-size](#font-size)
 - [hide-text](#hide-text)
 
@@ -609,6 +630,66 @@ Output:
 
 	.class {
 		font-family: "Monaco", "Courier New", monospace;
+	}
+
+####font-face
+
+This is a quicker, nicer way of adding a font face declaration to your styles
+
+Mixin:
+
+	font-face($font-name, $file, $svg-font-name: false, $weight: 100, $style: normal)
+
+**$font-name**: The name of the font
+
+**$file**: The path to the font files without the extension
+
+**$svg-font-name**: The svg ID for the font (e.g. )
+
+**$weight**: The font weight
+
+**$style**: The font-style
+
+Usage:
+
+	@include font-face('Helvetica Neue Roman', fonts/helveticaneueltstd-roman-webfont, helvetica_neue_lt_std55_roman);
+
+Output:
+
+	@font-face{
+		font-family:'Helvetica Neue Roman';
+		src: url('fonts/helveticaneueltstd-roman-webfont.eot');
+		src: url('fonts/helveticaneueltstd-roman-webfont.eot?#iefix') format('embedded-opentype'),
+			url('fonts/helveticaneueltstd-roman-webfont.woff') format('woff'),
+			url('fonts/helveticaneueltstd-roman-webfont.ttf') format('truetype'),
+			url'(fonts/helveticaneueltstd-roman-webfont.svg#helvetica_neue_lt_std55_roman') format('svg');
+		font-weight: 400;
+		font-style: normal
+	}
+
+####font-optimize
+
+Allows optimisation of fonts
+
+Mixin:
+
+	font-optimize($kerning: 0, $rendering: optimizeLegibility)
+
+**$kerning**: The letter kerning - can be px/em/%
+
+**$rendering**: Text rendering value - Read more on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/CSS/text-rendering)
+
+Usage:
+
+	.class {
+		@include font-optimize;
+	}
+
+Output:
+
+	.class {
+		letter-spacing: 0;
+		text-rendering: optimizeLegibility;
 	}
 
 ####font-size
@@ -738,8 +819,8 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [box-sizing](#box-sizing)
 		- [gradient](#gradient)
 		- [opacity](#opacity)
-		- [transition-property && transition](#transition-property--transition)
-		- [transform](#transform)
+		- [transition && transition-property](#transition--transition-property)
+		- [transform && transform-property](#transform--transform-property)
 	- [Layout](#layout)
 		- [abs](#abs)
 		- [columns](#columns)
@@ -755,6 +836,8 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [img-responsive](#img-responsive)
 	- [Typography](#typography)
 		- [font](#font)
+		- [font-face](#font-face)
+		- [font-optimize](#font-optimize)
 		- [font-size](#font-size)
 		- [hide-text](#hide-text)
 - [**Predefined**](#predefined)
