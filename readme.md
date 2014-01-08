@@ -277,7 +277,7 @@ This handles transitions and being able to override specific transition properti
 
 Mixins:
 
-	transition($time: 0.5s, $attr: all, $effect: ease)
+	transition($time: 0.5s, $attr: all, $effect: ease, $delay: 0)
 	transition-property($attr, $value)
 
 **$time**: How long the animation lasts
@@ -286,6 +286,7 @@ Mixins:
 
 **$effect**: What transition effect should be used. See the [W3C Working Draft](http://www.w3.org/TR/css3-transitions/#transition-timing-function-property) for all options.
 
+**$delay**:  Define a length of time to delay the start of the transition
 
 Usage:
 
@@ -300,10 +301,10 @@ Usage:
 Output:
 
 	.class {
-		-webkit-transition: 0.5s all ease;
-		-moz-transition: 0.5s all ease;
-		-o-transition: 0.5s all ease;
-		transition: 0.5s all ease
+		-webkit-transition: 0.5s all ease 0;
+		-moz-transition: 0.5s all ease 0;
+		-o-transition: 0.5s all ease 0;
+		transition: 0.5s all ease 0
 	}
 
 	.context .class {
