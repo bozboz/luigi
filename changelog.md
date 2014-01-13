@@ -1,5 +1,12 @@
 #Changelog
 
+##1.1.0 (2014-01-13)
+
+- Adding delay attribute to transition mixin
+- Adding font-face mixin
+- Adding font-optimze mixin
+- Adding transform property mixin
+
 ##1.0.0 (2014-01-02)
 
 - Adding table of contents to each section on changelog
