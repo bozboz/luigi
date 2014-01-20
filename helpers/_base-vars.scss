@@ -13,5 +13,8 @@ $debug-mode: false !default;
 $enable-rem: false !default;
 $global-box-sizing: true !default;
 
+$sprite: false !default;
+$sprite-size: 0 0 !default;
+
 $sticky-footer-height: false !default;
 $sticky-footer-margin: $sticky-footer-height !default;
