@@ -24,3 +24,12 @@
 	list-style: none;
 }
 .secret-list {@include secret-list;}
+
+@mixin class($class) {
+	%#{$class} {
+		@content;
+	}
+	[class*="#{$class}"] {
+		@extend %#{$class}
+	}
+}
