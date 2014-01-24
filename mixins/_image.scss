@@ -1,9 +1,7 @@
-@if $sprite {
-	@mixin sprite($width, $height, $bg-extras) {
-		width: $width;
-		height: $height;
-		background: url($sprite) no-repeat $bg-extras;
-	}
+@mixin sprite($width, $height, $bg-extras) {
+	width: $width;
+	height: $height;
+	background: url($sprite) no-repeat $bg-extras;
 }
 
 @mixin image-2x($image-path, $image-size: $sprite-size) {
