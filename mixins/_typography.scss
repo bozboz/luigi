@@ -32,11 +32,6 @@
 	text-rendering: $rendering;
 }
 
-@if $enable-rem {
-	html {
-		font-size: 62.5%;
-	}
-}
 @function calculate-rem($size) {
 	$rem-size: $size / 16px;
 	@return #{$rem-size}rem;
