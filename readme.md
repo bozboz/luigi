@@ -56,13 +56,17 @@ This is the default media quiery breakpoints array for use with the [bp](#bp) mi
 
 Whether or not debug mode is enabled (see information about [Debug](#debug))
 
-	$enable-rem: false !default;
-
-Whether the site is using rems for its font size (see the [font-size](#font-size) mixin)
-
 	$global-box-sizing: true !default;
 
 This determines whether the site uses global `border-box` as its box model (see the [Box Sizing](#box-sizing) file)
+
+	$sprite: false !default;
+
+Used with the [sprite](#sprite) mixin to set a base path for the image sprite.
+
+	$sprite-size
+
+Used with the [image-2x](#image-2x) mixing in the image file // TODO: Joao to finish
 
 	$sticky-footer-height: false !default;
 	$sticky-footer-margin: $sticky-footer-height !default;
@@ -98,6 +102,8 @@ This is a basic print stylesheet - taken from Stu Robson's sassifaction (see [Ap
 The mixins folder comprises of:
 
 - [CSS3](#css3)
+- [Grid](#grid)
+- [Image](#image)
 - [Layout](#layout)
 - [Modular](#modular)
 - [Pseudo](#pseudo)
@@ -357,6 +363,56 @@ Output:
 		transition-property: transform, opacity
 	}
 
+###Grid
+
+*[mixins/_grid.scss](mixins/_grid.scss)*
+
+The grid system is included but not fully developed - documentation can be seen at the top of the [file](mixins/_grid.scss).
+
+Full instructions on use will be written once the grid system has been implemented.
+
+###Image
+
+*[mixins/_image.scss](mixins/_image.scss)*
+
+The image mixin file contains:
+
+- [image-2x](#image-2x)
+- [sprite](#sprite)
+- // Joao to add image fallback
+
+####image-2x
+
+// TODO: Joao to document
+
+####sprite
+
+This makes using a sprite in a project easier and less to code - a sprite path is specified and then the mixing included. Needs to be used with the `$sprite` var.
+
+Mixin:
+
+	sprite($width, $height, $bg-extras)
+
+**$width**: The width of the image
+**$height**: The height of the image
+**$bg-extras**: The location of the image on the sprite & any other
+
+Usage:
+
+	$sprite: '/images/sprite.png';
+
+	.class {
+		@include sprite(25px, 20px, 0 0);
+	}
+
+Output:
+
+	.class {
+		width: 25px;
+		height: 20px;
+		background: url("/images/sprite.png") no-repeat 0 0;
+	}
+
 ###Layout
 
 *[mixins/_layout.scss](mixins/_layout.scss)*
@@ -438,9 +494,31 @@ Output:
 
 This file contains modular classes which can be used in the SCSS or within your HTML and, as such, do not take parameters. To see what each mixin does - view [modular.scss](mixins/_modular.scss)
 
+- [class](#class)
 - [clearfix](#clearfix)
 - [reset](#reset)
 - [secret-list](#secret-list)
+
+####class
+
+This encourages more modular class naming approach and will match class names that are an extension of the base class. You passi in a class name (for example `button`) and will be inherited by variations (e.g. `button-alt` will inherit button class) - [see the example on Codepen](http://codepen.io/anon/pen/zaxej)
+
+Mixin:
+
+	class($class)
+
+Usage:
+
+	@include class(button) {
+		font-size: red;
+	}
+
+Output:
+
+	[class*="button"] {
+		font-size: red;
+	}
+
 
 ####clearfix
 
@@ -822,10 +900,15 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [opacity](#opacity)
 		- [transition && transition-property](#transition--transition-property)
 		- [transform && transform-property](#transform--transform-property)
+	- [Grid](#grid)
+	- [Image](#image)
+		- [image-2x](#image-2x)
+		- [sprite](#sprite)
 	- [Layout](#layout)
 		- [abs](#abs)
 		- [columns](#columns)
 	- [Modular](#modular)
+		- [class](#class)
 		- [clearfix](#clearfix)
 		- [reset](#reset)
 		- [secret-list](#secret-list)
