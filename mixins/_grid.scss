@@ -1,5 +1,4 @@
 // When using the grid item mixin, the amount elements in a row should add up to $columns
-
 // Grid push is irrespective of the above
 
 // .wrapper {
@@ -8,8 +7,6 @@
 
 // .sidebar {
 //   @include grid-item(3);
-
-//   background: red; height: 20px; border: 1px solid green;
 // }
 // .sidebar-small {
 //   @include grid-width(2);
@@ -17,8 +14,6 @@
 // .content {
 //   @include grid-push(8);
 //   @include grid-width(2);
-
-//   height: 40px; background: salmon;
 // }
 
 
