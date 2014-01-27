@@ -50,15 +50,27 @@ The default gutter - this is used as the margin bottom for things such as `<p>` 
 	    'desk' '(min-width: 1024px)'
 	) !default;
 
-This is the default media quiery breakpoints array for use with the [bp](#bp) mixin.
+This is the default media query breakpoints array for use with the [bp](#bp) mixin.
 
 	$debug-mode: false !default;
 
-Whether or not debug mode is enabled (see information about [Debug](#debug))
+Whether or not debug mode is enabled (see information about [Debug](#debug)).
+
+	$image-fallback-extension: 'png' !default;
+
+Used with the [background-image](#background-image) and [image-2x](#image-2x) to append the 'png' extension to the filename.
+
+	$image-path: '/images' !default;
+
+This sets the default image folder for the mixins in [mixins/_images.scss](mixins/_images.scss).
+
+	$image-retina-suffix: '@2x' !default;
+
+This is the retina suffix for retina images.
 
 	$global-box-sizing: true !default;
 
-This determines whether the site uses global `border-box` as its box model (see the [Box Sizing](#box-sizing) file)
+This determines whether the site uses global `border-box` as its box model (see the [Box Sizing](#box-sizing) file).
 
 	$sprite: false !default;
 
@@ -66,7 +78,7 @@ Used with the [sprite](#sprite) mixin to set a base path for the image sprite.
 
 	$sprite-size
 
-Used with the [image-2x](#image-2x) mixing in the image file // TODO: Joao to finish
+Used with the [image-2x](#image-2x) mixing in the image file to set the original sprite-size (at 72ppi).
 
 	$sticky-footer-height: false !default;
 	$sticky-footer-margin: $sticky-footer-height !default;
@@ -377,13 +389,73 @@ Full instructions on use will be written once the grid system has been implement
 
 The image mixin file contains:
 
+- [background-image](#background-image)
 - [image-2x](#image-2x)
 - [sprite](#sprite)
-- // Joao to add image fallback
+
+####background-image
+
+Background-image is a mixin which uses SVG background images with PNG and retina fallback. This mixin require Modernizr.
+
+Mixin:
+
+	background-image($name, $size:false)
+
+**$name**: The filename
+**$size**: The background size
+
+Usage:
+
+	.class {
+		@include background-image(sprite, 50px 100px);
+	}
+
+Output:
+
+	.class {
+		background-image: url(/images/sprite.svg);
+		background-size: 50px 100px;
+	}
+
+	.no-svg .class {
+		background-image: url(/images/sprite.png);
+	}
+
+	@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+		.no-svg .class {
+		background-image: url(/images/sprite@2x.png);
+		}
+	}
 
 ####image-2x
 
-// TODO: Joao to document
+This mixin will get the high resolution image for retina displays. The retina images are twice as big with @2x appended in the name.
+
+Mixin:
+
+	image-2x($image-path, $image-size: $sprite-size)
+
+**$image-path**: The image path
+**$image-size**: The original sprite size (at 72ppi)
+
+Usage:
+	
+	$sprite-size: 50px 100px;
+
+	.class {
+		@include image-2x('/images/sprite@2x.png');
+	}
+
+Output:
+
+	@media (-moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3 / 2), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
+		.class {
+			background-image: url("/images/sprite@2x.png");
+			-webkit-background-size: 50px 100px;
+			background-size: 50px 100px;
+		}
+	}
+
 
 ####sprite
 
@@ -902,6 +974,7 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [transform && transform-property](#transform--transform-property)
 	- [Grid](#grid)
 	- [Image](#image)
+		- [background-image](#background-image)
 		- [image-2x](#image-2x)
 		- [sprite](#sprite)
 	- [Layout](#layout)
