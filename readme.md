@@ -434,9 +434,9 @@ This mixin will get the high resolution image for retina displays. The retina im
 
 Mixin:
 
-	image-2x($image-path, $image-size: $sprite-size)
+	image-2x($name, $image-size: $sprite-size)
 
-**$image-path**: The image path
+**$name**: The filename
 
 **$image-size**: The original sprite size (at 72ppi)
 
@@ -445,19 +445,18 @@ Usage:
 	$sprite-size: 50px 100px;
 
 	.class {
-		@include image-2x('/images/sprite@2x.png');
+		@include image-2x(sprite);
 	}
 
 Output:
 
 	@media (-moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3 / 2), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
 		.class {
-			background-image: url("/images/sprite@2x.png");
+			background-image: url(/images/sprite@2x.png);
 			-webkit-background-size: 50px 100px;
 			background-size: 50px 100px;
 		}
 	}
-
 
 ####sprite
 
