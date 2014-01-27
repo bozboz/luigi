@@ -76,7 +76,7 @@ This determines whether the site uses global `border-box` as its box model (see 
 
 Used with the [sprite](#sprite) mixin to set a base path for the image sprite.
 
-	$sprite-size
+	$sprite-size: 0 0 !default;
 
 Used with the [image-2x](#image-2x) mixing in the image file to set the original sprite-size (at 72ppi).
 
@@ -402,6 +402,7 @@ Mixin:
 	background-image($name, $size:false)
 
 **$name**: The filename
+
 **$size**: The background size
 
 Usage:
@@ -436,6 +437,7 @@ Mixin:
 	image-2x($image-path, $image-size: $sprite-size)
 
 **$image-path**: The image path
+
 **$image-size**: The original sprite size (at 72ppi)
 
 Usage:
@@ -466,7 +468,9 @@ Mixin:
 	sprite($width, $height, $bg-extras)
 
 **$width**: The width of the image
+
 **$height**: The height of the image
+
 **$bg-extras**: The location of the image on the sprite & any other
 
 Usage:
