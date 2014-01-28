@@ -1,5 +1,17 @@
 #Changelog
 
+##1.2.0 (2014-01-28)
+
+- Added _image.scss which includes
+	- background-image
+	- image-2x
+	- sprite
+- Included preliminary grid system
+- Removed `$enable-rem`
+- Re-ordering _modular.scss and _luigi.scss to be alphabetical
+- Added `class` mixin
+
+
 ##1.1.0 (2014-01-13)
 
 - Adding delay attribute to transition mixin
