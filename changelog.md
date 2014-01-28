@@ -1,5 +1,9 @@
 #Changelog
 
+##1.2.1 (2014-01-28)
+
+- Wrong variable name referenced in _image.scss
+
 ##1.2.0 (2014-01-28)
 
 - Added _image.scss which includes
