@@ -7,7 +7,7 @@
 	}
 }
 
-@mixin clearfix {
+%clearfix {
 	zoom: 1;
 	&:before, &:after {
 		content: "";
@@ -17,19 +17,25 @@
 		clear: both;
 	}
 }
-.clearfix {@include clearfix;}
+.clearfix {
+	@extend %clearfix;
+}
 
-@mixin reset {
+%reset {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	background: none;
 }
-.reset {@include reset;}
+.reset {
+	@extend %reset;
+}
 
-@mixin secret-list {
+%secret-list {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
-.secret-list {@include secret-list;}
+.secret-list {
+	@extend %secret-list;
+}
