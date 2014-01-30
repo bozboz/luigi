@@ -64,6 +64,17 @@
 	}
 }
 
+@mixin gradient-radial($size, $shape, $position, $colors...){
+	$type: 'radial';
+	$radial-prefs: '-webkit' '-moz' '-o';
+	$fallback: nth($colors, 1);
+	background: $fallback;
+	@each $radial-pref in $radial-prefs {
+		background: #{$radial-pref}-#{$type}-gradient($position, $size $shape, $colors);
+	}
+	background: #{$type}-gradient($size $shape at $position, $colors);
+}
+
 @mixin opacity($opacity: 50) {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" $opacity ")";
 	filter: alpha(opacity=$opacity);
