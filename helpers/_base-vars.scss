@@ -3,10 +3,10 @@ $base-font-size: 12px !default;
 $base-gutter: 15px !default;
 
 $breakpoints: (
-    'palm' '(max-width: 480px)',
-    'lap' '(min-width: 481px) and (max-width: 1023px)',
-    'portable' '(max-width: 1023px)',
-    'desk' '(min-width: 1024px)'
+    'mouse' '(max-width: 480px)',
+    'cat' '(min-width: 481px) and (max-width: 1023px)',
+    'dog' '(max-width: 1023px)',
+    'whale' '(min-width: 1024px)'
 ) !default;
 
 $debug-mode: false !default;
