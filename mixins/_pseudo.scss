@@ -24,9 +24,8 @@
 }
 
 @mixin placeholder {
-	$prefixes: ':-webkit' '-moz' ':-moz' '-ms';
-	@each $prefix in $prefixes {
-		&:#{$prefix}-input-placeholder {
+	@each $vendor in $vendors-placeholder {
+		&:#{$vendor}-input-placeholder {
 			@content;
 		}
 	}

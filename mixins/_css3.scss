@@ -53,11 +53,10 @@
 
 @mixin gradient-radial($size, $shape, $position, $colors...){
 	$type: 'radial';
-	$radial-prefs: '-webkit' '-moz' '-o';
 	$fallback: nth($colors, 1);
 	background: $fallback;
-	@each $radial-pref in $radial-prefs {
-		background: #{$radial-pref}-#{$type}-gradient($position, $size $shape, $colors);
+	@each $vendor in $vendors-no-w3c {
+		background: #{$vendor}-#{$type}-gradient($position, $size $shape, $colors);
 	}
 	background: #{$type}-gradient($size $shape at $position, $colors);
 }
@@ -69,30 +68,26 @@
 	zoom: 1;
 }
 
-
 @mixin transition($time: 0.5s, $attr: all, $effect: ease) {
-	@each $prefix in $transition-prefix {
-		#{$prefix}transition: $time $attr $effect;
+	@each $vendor in $vendors-no-ms {
+		#{$vendor}transition: $time $attr $effect;
 	}
 }
 
-$transition-prefix: '-webkit-' '-moz-' '-o-' '';
 @mixin transition-property($attr, $value) {
-	@each $prefix in $transition-prefix {
-		#{$prefix}transition-#{$attr}: $value;
+	@each $vendor in $vendors-no-ms {
+		#{$vendor}transition-#{$attr}: $value;
 	}
 }
 
 @mixin transform($trans) {
-	$prefixes: '-webkit-' '-moz-' '-ms-' '-o-' '';
-	@each $prefix in $prefixes {
-		#{$prefix}transform: $trans;
+	@each $vendor in $vendors{
+		#{$vendor}transform: $trans;
 	}
 }
 
-$transform-prefix: '-webkit-' '-moz-' '-o-' '-ms-' '';
 @mixin transform-property($attr, $value) {
-	@each $prefix in $transform-prefix {
-		#{$prefix}transform-#{$attr}: $value;
+	@each $vendor in $vendors {
+		#{$vendor}transform-#{$attr}: $value;
 	}
 }
