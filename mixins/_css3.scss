@@ -94,7 +94,7 @@ $transition-prefix: '-webkit-' '-moz-' '-o-' '';
 
 $transform-prefix: '-webkit-' '-moz-' '-o-' '-ms-' '';
 @mixin transform-property($attr, $value) {
-	@each $prefix in $transition-prefix {
-		#{$prefix}transition-#{$attr}: #{$prefix}$value;
+	@each $prefix in $transform-prefix {
+		#{$prefix}transform-#{$attr}: $value;
 	}
 }
