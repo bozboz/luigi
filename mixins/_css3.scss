@@ -26,7 +26,7 @@
 	box-sizing: $box;
 }
 
-@mixin alpha-color($theme, $alpha: 0.5, $property: 'background-color') {
+@mixin color-alpha($theme, $alpha: 0.5, $property: 'background-color') {
 	#{$property}: nth($theme, 1); //fallback
 	#{$property}: rgba(nth($theme, 1), $alpha);
 }
