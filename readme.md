@@ -304,7 +304,7 @@ This handles transitions and being able to override specific transition properti
 
 Mixins:
 
-	transition($time: 0.5s, $attr: all, $effect: ease, $delay: 0)
+	transition($time: 0.2s, $attr: all, $effect: ease, $webkit-transform: true)
 	transition-property($attr, $value)
 
 **$time**: How long the animation lasts
@@ -314,6 +314,8 @@ Mixins:
 **$effect**: What transition effect should be used. See the [W3C Working Draft](http://www.w3.org/TR/css3-transitions/#transition-timing-function-property) for all options.
 
 **$delay**:  Define a length of time to delay the start of the transition
+
+**$webkit-transform**: Whether to add `-webkit-transform: translateZ(0);` to fix opacity and other rendering issues as [described here](http://stackoverflow.com/questions/15051557/very-difficult-to-solve-and-strange-css3-opacity-transition-issue-must-be-a#answer-17353755)
 
 Usage:
 
@@ -450,7 +452,7 @@ Mixin:
 **$image-size**: The original sprite size (at 72ppi)
 
 Usage:
-	
+
 	$sprite-size: 50px 100px;
 
 	.class {
