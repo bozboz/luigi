@@ -4,7 +4,7 @@
 > - Add info for the new gradient-radial mixin (usage: @include gradient-radial(farthest-corner, circle, center center, rgba(255,0,0,0.5), #333, orange))
 > - Update default vars to include vendors and new breakpoints
 > - Modular classes are now slient placeholders
-
+> - Add info for new color-alpha rgba mixin (mixins/css3.scss)
 
 #Luigi
 

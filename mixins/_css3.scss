@@ -26,6 +26,12 @@
 	box-sizing: $box;
 }
 
+@mixin alpha-color($theme, $alpha: 0.5, $property: 'background-color') {
+	#{$property}: nth($theme, 1); //fallback
+	#{$property}: rgba(nth($theme, 1), $alpha);
+}
+
+
 // Gradient mixin for vertical, horizonal and diagonal
 // Usage:
 //		@include gradient(h, #f00, #0f0);
