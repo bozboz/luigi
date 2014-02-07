@@ -1,7 +1,6 @@
 > TODO:
 >
 > - Update transform-property mixin - replaced the **transition** attribute to **transform** and remove the vendor-prefix
-> - Update the transition mixin - removed **delay** attribute
 > - Add info for the new gradient-radial mixin (usage: @include gradient-radial(farthest-corner, circle, center center, rgba(255,0,0,0.5), #333, orange))
 > - Update default vars to include vendors and new breakpoints
 > - Modular classes are now slient placeholders
@@ -304,7 +303,7 @@ This handles transitions and being able to override specific transition properti
 
 Mixins:
 
-	transition($time: 0.2s, $attr: all, $effect: ease, $webkit-transform: true)
+	transition($time: 0.2s, $attr: all, $effect: ease, $webkit-transform: false)
 	transition-property($attr, $value)
 
 **$time**: How long the animation lasts
@@ -312,8 +311,6 @@ Mixins:
 **$attr**: The attribute to affect (e.g. all, opacity, width)
 
 **$effect**: What transition effect should be used. See the [W3C Working Draft](http://www.w3.org/TR/css3-transitions/#transition-timing-function-property) for all options.
-
-**$delay**:  Define a length of time to delay the start of the transition
 
 **$webkit-transform**: Whether to add `-webkit-transform: translateZ(0);` to fix opacity and other rendering issues as [described here](http://stackoverflow.com/questions/15051557/very-difficult-to-solve-and-strange-css3-opacity-transition-issue-must-be-a#answer-17353755)
 
@@ -330,10 +327,10 @@ Usage:
 Output:
 
 	.class {
-		-webkit-transition: 0.5s all ease 0;
-		-moz-transition: 0.5s all ease 0;
-		-o-transition: 0.5s all ease 0;
-		transition: 0.5s all ease 0
+		-webkit-transition: 0.5s all ease;
+		-moz-transition: 0.5s all ease;
+		-o-transition: 0.5s all ease;
+		transition: 0.5s all ease
 	}
 
 	.context .class {

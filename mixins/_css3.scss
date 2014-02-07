@@ -68,7 +68,7 @@
 	zoom: 1;
 }
 
-@mixin transition($time: 0.2s, $attr: all, $effect: ease, $webkit-transform: true) {
+@mixin transition($time: 0.2s, $attr: all, $effect: ease, $webkit-transform: false) {
 	@each $vendor in $vendors-no-ms {
 		#{$vendor}transition: $time $attr $effect;
 	}
