@@ -51,7 +51,7 @@
 	}
 
 	background: $end; // Old browsers
-	@each $vendor in $vendors-gradient {
+	@each $vendor in $vendors {
 		background: #{$vendor}#{$gradient}-gradient($direction, $start 0%, $end 100%);
 	}
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start}', endColorstr='#{$end}',GradientType=#{$ie-type});
