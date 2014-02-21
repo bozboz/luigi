@@ -1,12 +1,6 @@
 > TODO:
 >
-> - Update transform-property mixin - replaced the **transition** attribute to **transform** and remove the vendor-prefix
 > - Add info for the new gradient-radial mixin (usage: @include gradient-radial(farthest-corner, circle, center center, rgba(255,0,0,0.5), #333, orange))
-> - Update default vars to include vendors and new breakpoints
-> - Modular classes are now silent placeholders
-> - Add info for new color-alpha rgba mixin (mixins/css3.scss)
-> - Add _shapes.scss as new file
-> - Update file structure (triangle mixin moved to shapes.scss)
 > - Add info for circle and square mixin
 
 #Luigi
@@ -55,13 +49,13 @@ The default font size for the website
 The default gutter - this is used as the margin bottom for things such as `<p>` and headings
 
 	$breakpoints: (
-	    'palm' '(max-width: 480px)',
-	    'lap' '(min-width: 481px) and (max-width: 1023px)',
-	    'portable' '(max-width: 1023px)',
-	    'desk' '(min-width: 1024px)'
+		'mouse' '(max-width: 480px)',
+		'cat' '(min-width: 481px) and (max-width: 1023px)',
+		'dog' '(max-width: 1023px)',
+		'whale' '(min-width: 1024px)'
 	) !default;
 
-This is the default media query breakpoints array for use with the [bp](#bp) mixin.
+This is the default media query breakpoints array for use with the [bp](#bp) mixin. The variables should be animal names.
 
 	$debug-mode: false !default;
 
@@ -95,6 +89,13 @@ Used with the [image-2x](#image-2x) mixing in the image file to set the original
 	$sticky-footer-margin: $sticky-footer-height !default;
 
 These are for the sticky footer predefined file - read about the [Sticky Footer](#sticky-footer).
+
+	$vendors: '-webkit-' '-moz-' '-ms-' '-o-' '' !default;
+	$vendors-no-ms: '-webkit-' '-moz-' '-o-' '' !default;
+	$vendors-no-w3c: '-webkit-' '-moz-' '-o-' '-ms-' !default;
+	$vendors-placeholder: ':-webkit' '-moz' ':-moz' '-ms' !default;
+
+Vendor arrays used for the [CSS3](#css3) mixins.
 
 ###Debug
 
@@ -131,6 +132,7 @@ The mixins folder comprises of:
 - [Modular](#modular)
 - [Pseudo](#pseudo)
 - [Responsive](#responsive)
+- [Shapes](#shapes)
 - [Typography](#typography)
 
 ###CSS3
@@ -143,6 +145,7 @@ This file contains many mixins that require vendor prefixes to achieve what have
 - [border-radius-noclip && border-radius](#border-radius-noclip--border-radius)
 - [box-shadow](#box-shadow)
 - [box-sizing](#box-sizing)
+- [color-alpha](#color-alpha)
 - [gradient](#gradient)
 - [opacity](#opacity)
 - [transition && transition-property](#transition--transition-property)
@@ -249,6 +252,34 @@ Output:
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
+	}
+
+####color-alpha
+
+Provides `rgba` with a property fallback
+
+Mixin:
+
+	color-alpha($theme, $alpha: 0.5, $property: 'background-color')
+
+**$theme**: The colour you wish to make transparent (can be hex or rgb)
+
+**$alpha**: The opacity value (from 0 to 1)
+
+**$property**: The property you wish to apply the `rgba` to (defaults to `background-color`)
+
+
+Usage:
+
+	.class {
+		@include color-alpha(#f00, 0.3);
+	}
+
+Output:
+
+	.class {
+		background-color: #f00;
+		background-color: rgba(255, 0, 0, 0.3);
 	}
 
 ####gradient
@@ -380,10 +411,10 @@ Output:
 	}
 
 	.context .class {
-		-webkit-transition-property: -webkit-transform, opacity;
-		-moz-transition-property: -moz-transform, opacity;
-		-o-transition-property: -o-transform, opacity;
-		transition-property: transform, opacity
+		-webkit-transform-property: -webkit-transform, opacity;
+		-moz-transform-property: -moz-transform, opacity;
+		-o-transform-property: -o-transform, opacity;
+		transform-property: transform, opacity
 	}
 
 ###Grid
@@ -618,46 +649,18 @@ This completely resets an element and strips it of its margin, padding, border a
 
 This allows the semantic use of a `ul` and `li` without the styles.
 
+**Clearfix, reset and secret-list are all placeholder selectors and should be used with an extend. E.g:**
+
+	@extend %clearfix;
+
 ###Pseudo
 
 *[mixins/_pseudo.scss](mixins/_pseudo.scss)*
 
 The pseudo file contains mixins which affect or add a pseudo element(s)
 
-- [css-triangle](#css-triangle)
+
 - [placeholder](#placeholder)
-
-####css-triangle
-
-This makes the element a css triangle - for use as a pointer with the `:after` or `:before` pseudo element
-
-Mixin:
-
-	css-triangle($direction: down, $size: 20px, $color: #000)
-
-**$direction**: what direction the arrow points (up/down/left/right)
-
-**$size**: The size of the triangle
-
-**$color**: What colour the triangle is
-
-Usage:
-
-	.class:after {
-		@include css-triangle(up, 10px, #fff);
-		content: '';
-	}
-
-Output:
-
-	.class:after {
-		width: 0;
-		height: 0;
-		border: 10px solid transparent;
-		border-bottom-color: #fff;
-		border-top-width: 0;
-		content: '';
-	}
 
 ####placeholder
 
@@ -761,6 +764,46 @@ Output:
 		display: block;
 		max-width: 100%;
 		height: auto;
+	}
+
+###Shapes
+
+*[mixins/_responsive.scss](mixins/_responsive.scss)*
+
+Defines mixins for making shapes with less code.
+
+- [css-triangle](#css-triangle)
+
+####css-triangle
+
+This makes the element a css triangle - for use as a pointer with the `:after` or `:before` pseudo element
+
+Mixin:
+
+	css-triangle($direction: down, $size: 20px, $color: #000)
+
+**$direction**: what direction the arrow points (up/down/left/right)
+
+**$size**: The size of the triangle
+
+**$color**: What colour the triangle is
+
+Usage:
+
+	.class:after {
+		@include css-triangle(up, 10px, #fff);
+		content: '';
+	}
+
+Output:
+
+	.class:after {
+		width: 0;
+		height: 0;
+		border: 10px solid transparent;
+		border-bottom-color: #fff;
+		border-top-width: 0;
+		content: '';
 	}
 
 ###Typography
@@ -982,6 +1025,7 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [border-radius-noclip && border-radius](#border-radius-noclip--border-radius)
 		- [box-shadow](#box-shadow)
 		- [box-sizing](#box-sizing)
+		- [color-alpha](#color-alpha)
 		- [gradient](#gradient)
 		- [opacity](#opacity)
 		- [transition && transition-property](#transition--transition-property)
@@ -1000,11 +1044,12 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [reset](#reset)
 		- [secret-list](#secret-list)
 	- [Pseudo](#pseudo)
-		- [css-triangle](#css-triangle)
 		- [placeholder](#placeholder)
 	- [Responsive](#responsive)
 		- [bp](#bp)
 		- [img-responsive](#img-responsive)
+	- [Shapes](#shapes)
+		- [css-triangle](#css-triangle)
 	- [Typography](#typography)
 		- [font](#font)
 		- [font-face](#font-face)
