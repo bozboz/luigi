@@ -3,8 +3,11 @@
 > - Update transform-property mixin - replaced the **transition** attribute to **transform** and remove the vendor-prefix
 > - Add info for the new gradient-radial mixin (usage: @include gradient-radial(farthest-corner, circle, center center, rgba(255,0,0,0.5), #333, orange))
 > - Update default vars to include vendors and new breakpoints
-> - Modular classes are now slient placeholders
+> - Modular classes are now silent placeholders
 > - Add info for new color-alpha rgba mixin (mixins/css3.scss)
+> - Add _shapes.scss as new file
+> - Update file structure (triangle mixin moved to shapes.scss)
+> - Add info for circle and square mixin
 
 #Luigi
 
