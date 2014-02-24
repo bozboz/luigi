@@ -2,6 +2,7 @@
 >
 > - Add info for the new gradient-radial mixin (usage: @include gradient-radial(farthest-corner, circle, center center, rgba(255,0,0,0.5), #333, orange))
 > - Add info for circle and square mixin
+> - Add info for tuncate-text added in [_typography.scss](https://github.com/bozboz/luigi/blob/master/mixins/_typography.scss#L50)
 
 #Luigi
 
@@ -1003,6 +1004,9 @@ If the margin on the body needs to be more or less than the height of the footer
 
 ####5. Sticky Footer
 [Modern Clean CSS "Sticky Footer"](http://mystrd.at/modern-clean-css-sticky-footer/)
+
+####5. UtilityBelt
+[UtilityBelt](https://github.com/dmtintner/UtilityBelt)
 
 ###3. Inspiration
 
