@@ -347,7 +347,7 @@ Mixins:
 
 **$effect**: What transition effect should be used. See the [W3C Working Draft](http://www.w3.org/TR/css3-transitions/#transition-timing-function-property) for all options.
 
-**$webkit-transform**: Whether to add `-webkit-transform: translateZ(0);` to fix opacity and other rendering issues as [described here](http://stackoverflow.com/questions/15051557/very-difficult-to-solve-and-strange-css3-opacity-transition-issue-must-be-a#answer-17353755)
+**$webkit-transform**: Whether to add `-webkit-backface-visibility: hidden;` to fix opacity and other rendering issues as [described here](http://stackoverflow.com/questions/15051557/very-difficult-to-solve-and-strange-css3-opacity-transition-issue-must-be-a#answer-17353755)
 
 Usage:
 

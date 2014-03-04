@@ -79,7 +79,7 @@
 		#{$vendor}transition: $time $attr $effect;
 	}
 	@if $webkit-transform {
-		-webkit-transform: translateZ(0);
+		-webkit-backface-visibility: hidden;
 	}
 
 }
