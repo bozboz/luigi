@@ -57,9 +57,9 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start}', endColorstr='#{$end}',GradientType=#{$ie-type});
 }
 
-@mixin gradient-radial($size, $shape, $position, $colors...){
+@mixin gradient-radial($size, $shape, $position, $fallback, $colors...){
 	$type: 'radial';
-	$fallback: nth($colors, 1);
+	
 	background: $fallback;
 	@each $vendor in $vendors-no-w3c {
 		background: #{$vendor}-#{$type}-gradient($position, $size $shape, $colors);
