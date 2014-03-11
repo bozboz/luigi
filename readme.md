@@ -2,7 +2,6 @@
 >
 > - Add info for the new gradient-radial mixin (usage: @include gradient-radial(farthest-corner, circle, center center, rgba(255,0,0,0.5), #333, orange))
 > - Add info for circle and square mixin
-> - Add info for tuncate-text added in [_typography.scss](https://github.com/bozboz/luigi/blob/master/mixins/_typography.scss#L50)
 
 #Luigi
 
@@ -818,6 +817,7 @@ Contains mixins which would affect the typography of the website
 - [font-optimize](#font-optimize)
 - [font-size](#font-size)
 - [hide-text](#hide-text)
+- [truncate-text](#truncate-text)
 
 ####font
 
@@ -951,6 +951,30 @@ Output:
 		color: transparent;
 	}
 
+####truncate-text
+
+A simple way of truncating text on one line
+
+Mixin:
+
+	truncate-text($overflow: ellipsis)
+
+**$overflow**: The overflow type. Can be clip, ellipsis, or a string
+
+Usage:
+
+	.class {
+		@include truncate-text;
+	}
+
+Output:
+
+	.class {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
 ##Predefined
 
 The predefined folder contains blocks of CSS which have a function - almost like a library of tricks.
@@ -1060,6 +1084,7 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [font-optimize](#font-optimize)
 		- [font-size](#font-size)
 		- [hide-text](#hide-text)
+		- [truncate-text](#truncate-text)
 - [**Predefined**](#predefined)
 	- [Box Sizing](#box-sizing)
 	- [Sticky Footer](#sticky-footer)

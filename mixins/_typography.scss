@@ -48,7 +48,7 @@
 }
 
 @mixin truncate-text($overflow: ellipsis){
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: $overflow; // values are: clip, ellipsis, or a string
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: $overflow; // values are: clip, ellipsis, or a string
 }
