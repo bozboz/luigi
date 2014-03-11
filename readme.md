@@ -44,13 +44,13 @@ The default font size for the website
 The default gutter - this is used as the margin bottom for things such as `<p>` and headings
 
 	$breakpoints: (
-	    'palm' '(max-width: 480px)',
-	    'lap' '(min-width: 481px) and (max-width: 1023px)',
-	    'portable' '(max-width: 1023px)',
-	    'desk' '(min-width: 1024px)'
+		'mouse' '(max-width: 480px)',
+		'cat' '(min-width: 481px) and (max-width: 1023px)',
+		'dog' '(max-width: 1023px)',
+		'whale' '(min-width: 1024px)'
 	) !default;
 
-This is the default media query breakpoints array for use with the [bp](#bp) mixin.
+This is the default media query breakpoints array for use with the [bp](#bp) mixin. The variables should be animal names.
 
 	$debug-mode: false !default;
 
@@ -84,6 +84,13 @@ Used with the [image-2x](#image-2x) mixing in the image file to set the original
 	$sticky-footer-margin: $sticky-footer-height !default;
 
 These are for the sticky footer predefined file - read about the [Sticky Footer](#sticky-footer).
+
+	$vendors: '-webkit-' '-moz-' '-ms-' '-o-' '' !default;
+	$vendors-no-ms: '-webkit-' '-moz-' '-o-' '' !default;
+	$vendors-no-w3c: '-webkit-' '-moz-' '-o-' '-ms-' !default;
+	$vendors-placeholder: ':-webkit' '-moz' ':-moz' '-ms' !default;
+
+Vendor arrays used for the [CSS3](#css3) mixins.
 
 ###Debug
 
@@ -120,6 +127,7 @@ The mixins folder comprises of:
 - [Modular](#modular)
 - [Pseudo](#pseudo)
 - [Responsive](#responsive)
+- [Shapes](#shapes)
 - [Typography](#typography)
 
 ###CSS3
@@ -132,7 +140,9 @@ This file contains many mixins that require vendor prefixes to achieve what have
 - [border-radius-noclip && border-radius](#border-radius-noclip--border-radius)
 - [box-shadow](#box-shadow)
 - [box-sizing](#box-sizing)
+- [color-alpha](#color-alpha)
 - [gradient](#gradient)
+- [gradient-radial](#gradient-radial)
 - [opacity](#opacity)
 - [transition && transition-property](#transition--transition-property)
 - [transform && transform-property](#transform--transform-property)
@@ -240,9 +250,37 @@ Output:
 		box-sizing: border-box;
 	}
 
+####color-alpha
+
+Provides `rgba` with a property fallback
+
+Mixin:
+
+	color-alpha($theme, $alpha: 0.5, $property: 'background-color')
+
+**$theme**: The colour you wish to make transparent (can be hex or rgb)
+
+**$alpha**: The opacity value (from 0 to 1)
+
+**$property**: The property you wish to apply the `rgba` to (defaults to `background-color`)
+
+
+Usage:
+
+	.class {
+		@include color-alpha(#f00, 0.3);
+	}
+
+Output:
+
+	.class {
+		background-color: #f00;
+		background-color: rgba(255, 0, 0, 0.3);
+	}
+
 ####gradient
 
-Allows creation of background gradients without endless amounts of vendor prefixing. Can cater for horizontal, vertical or diagonal gradients. Radial gradients will need to be [manually generated](http://www.colorzilla.com/gradient-editor/)
+Allows creation of background gradients without endless amounts of vendor prefixing. Can cater for horizontal, vertical or diagonal gradients. See also [radial gradients](#gradient-radial) mixin.
 
 Mixin:
 
@@ -263,6 +301,41 @@ Usage:
 	}
 
 *Omitting output due to large amounts of code.- see the [mixin](mixins/_css3.scss) for more detail*
+
+####gradient-radial
+
+This mixin is for creating a radial gradient.
+
+Mixin:
+	
+	gradient-radial($size, $shape, $position, $fallback, $colors...)
+
+**$size**: Size describing how big the ending shape must be. The possible options are: **closest-side**, **closest-corner**, **farthest-side**, **farthest-corner**
+
+**$shape**: The gradient's shape. Can be **circle** or **ellipse**
+
+**$position**: The position of the gradient in the element
+
+**$fallback**: Fallback background color for old browsers
+
+**$colors**: The sequence of colors
+
+Usage:
+
+	.class {
+		@include gradient-radial(farthest-corner, circle, center center, #f00, rgba(255,0,0,0.5), #333, orange)
+	}
+
+Output:
+
+	.class {
+		background: #f00;
+		background: -webkit--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
+		background: -moz--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
+		background: -o--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
+		background: -ms--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
+		background: radial-gradient(farthest-corner circle at center center, rgba(255, 0, 0, 0.5), #333333, orange);
+	}
 
 ####opacity
 
@@ -295,7 +368,7 @@ This handles transitions and being able to override specific transition properti
 
 Mixins:
 
-	transition($time: 0.5s, $attr: all, $effect: ease, $delay: 0)
+	transition($time: 0.2s, $attr: all, $effect: ease, $webkit-transform: false)
 	transition-property($attr, $value)
 
 **$time**: How long the animation lasts
@@ -304,7 +377,7 @@ Mixins:
 
 **$effect**: What transition effect should be used. See the [W3C Working Draft](http://www.w3.org/TR/css3-transitions/#transition-timing-function-property) for all options.
 
-**$delay**:  Define a length of time to delay the start of the transition
+**$webkit-transform**: Whether to add `-webkit-backface-visibility: hidden;` to fix opacity and other rendering issues as [described here](http://stackoverflow.com/questions/15051557/very-difficult-to-solve-and-strange-css3-opacity-transition-issue-must-be-a#answer-17353755)
 
 Usage:
 
@@ -319,10 +392,10 @@ Usage:
 Output:
 
 	.class {
-		-webkit-transition: 0.5s all ease 0;
-		-moz-transition: 0.5s all ease 0;
-		-o-transition: 0.5s all ease 0;
-		transition: 0.5s all ease 0
+		-webkit-transition: 0.5s all ease;
+		-moz-transition: 0.5s all ease;
+		-o-transition: 0.5s all ease;
+		transition: 0.5s all ease
 	}
 
 	.context .class {
@@ -361,7 +434,7 @@ Usage:
 Output:
 
 	.class {
-	  	-webkit-transform: skew(35deg);
+		-webkit-transform: skew(35deg);
 		-moz-transform: skew(35deg);
 		-ms-transform: skew(35deg);
 		-o-transform: skew(35deg);
@@ -369,10 +442,10 @@ Output:
 	}
 
 	.context .class {
-		-webkit-transition-property: -webkit-transform, opacity;
-		-moz-transition-property: -moz-transform, opacity;
-		-o-transition-property: -o-transform, opacity;
-		transition-property: transform, opacity
+		-webkit-transform-property: -webkit-transform, opacity;
+		-moz-transform-property: -moz-transform, opacity;
+		-o-transform-property: -o-transform, opacity;
+		transform-property: transform, opacity
 	}
 
 ###Grid
@@ -441,7 +514,7 @@ Mixin:
 **$image-size**: The original sprite size (at 72ppi)
 
 Usage:
-	
+
 	$sprite-size: 50px 100px;
 
 	.class {
@@ -607,46 +680,18 @@ This completely resets an element and strips it of its margin, padding, border a
 
 This allows the semantic use of a `ul` and `li` without the styles.
 
+**Clearfix, reset and secret-list are all placeholder selectors and should be used with an extend. E.g:**
+
+	@extend %clearfix;
+
 ###Pseudo
 
 *[mixins/_pseudo.scss](mixins/_pseudo.scss)*
 
 The pseudo file contains mixins which affect or add a pseudo element(s)
 
-- [css-triangle](#css-triangle)
+
 - [placeholder](#placeholder)
-
-####css-triangle
-
-This makes the element a css triangle - for use as a pointer with the `:after` or `:before` pseudo element
-
-Mixin:
-
-	css-triangle($direction: down, $size: 20px, $color: #000)
-
-**$direction**: what direction the arrow points (up/down/left/right)
-
-**$size**: The size of the triangle
-
-**$color**: What colour the triangle is
-
-Usage:
-
-	.class:after {
-		@include css-triangle(up, 10px, #fff);
-		content: '';
-	}
-
-Output:
-
-	.class:after {
-		width: 0;
-		height: 0;
-		border: 10px solid transparent;
-		border-bottom-color: #fff;
-		border-top-width: 0;
-		content: '';
-	}
 
 ####placeholder
 
@@ -752,6 +797,100 @@ Output:
 		height: auto;
 	}
 
+###Shapes
+
+*[mixins/_responsive.scss](mixins/_responsive.scss)*
+
+Defines mixins for making shapes with less code.
+
+- [circle](#circle)
+- [square](#square)
+- [triangle](#triangle)
+
+####circle
+
+The easiest and quickiest way to do circle. This mixin can be used on slider pagination.
+
+Mixin:
+	
+	circle($size)
+
+**$size**: The diameter of the circle
+
+Usage:
+
+	.class {
+		@include circle(10px);
+	}
+
+Output:
+
+	.class {
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		-moz-background-clip: padding;
+		-webkit-background-clip: padding-box;
+		background-clip: padding-box;
+		width: 10px;
+		height: 10px;
+	}
+
+
+####square
+
+This creates a regular quadrilateral (four equal sides and four equal angles - 90&deg;).
+
+Mixin:
+	
+	square($size)
+
+**$size**: The size of the square
+
+Usage:
+
+	.class {
+		@include square(10px);
+	}
+
+Output:
+
+	.class {
+		width: 10px;
+		height: 10px;
+	}
+
+####triangle
+
+This makes the element a css triangle - for use as a pointer with the `:after` or `:before` pseudo element
+
+Mixin:
+
+	triangle($direction: down, $size: 20px, $color: #000)
+
+**$direction**: what direction the arrow points (up/down/left/right)
+
+**$size**: The size of the triangle
+
+**$color**: What colour the triangle is
+
+Usage:
+
+	.class:after {
+		@include triangle(up, 10px, #fff);
+		content: '';
+	}
+
+Output:
+
+	.class:after {
+		width: 0;
+		height: 0;
+		border: 10px solid transparent;
+		border-bottom-color: #fff;
+		border-top-width: 0;
+		content: '';
+	}
+
 ###Typography
 
 *[mixins/_typography.scss](mixins/_typography.scss)*
@@ -763,6 +902,7 @@ Contains mixins which would affect the typography of the website
 - [font-optimize](#font-optimize)
 - [font-size](#font-size)
 - [hide-text](#hide-text)
+- [truncate-text](#truncate-text)
 
 ####font
 
@@ -896,6 +1036,30 @@ Output:
 		color: transparent;
 	}
 
+####truncate-text
+
+A simple way of truncating text on one line
+
+Mixin:
+
+	truncate-text($overflow: ellipsis)
+
+**$overflow**: The overflow type. Can be clip, ellipsis, or a string
+
+Usage:
+
+	.class {
+		@include truncate-text;
+	}
+
+Output:
+
+	.class {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
 ##Predefined
 
 The predefined folder contains blocks of CSS which have a function - almost like a library of tricks.
@@ -950,6 +1114,9 @@ If the margin on the body needs to be more or less than the height of the footer
 ####5. Sticky Footer
 [Modern Clean CSS "Sticky Footer"](http://mystrd.at/modern-clean-css-sticky-footer/)
 
+####5. UtilityBelt
+[UtilityBelt](https://github.com/dmtintner/UtilityBelt)
+
 ###3. Inspiration
 
  - [Boss](https://github.com/bozboz/boss/)
@@ -971,7 +1138,9 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [border-radius-noclip && border-radius](#border-radius-noclip--border-radius)
 		- [box-shadow](#box-shadow)
 		- [box-sizing](#box-sizing)
+		- [color-alpha](#color-alpha)
 		- [gradient](#gradient)
+		- [gradient-radial](#gradient-radial)
 		- [opacity](#opacity)
 		- [transition && transition-property](#transition--transition-property)
 		- [transform && transform-property](#transform--transform-property)
@@ -989,17 +1158,21 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [reset](#reset)
 		- [secret-list](#secret-list)
 	- [Pseudo](#pseudo)
-		- [css-triangle](#css-triangle)
 		- [placeholder](#placeholder)
 	- [Responsive](#responsive)
 		- [bp](#bp)
 		- [img-responsive](#img-responsive)
+	- [Shapes](#shapes)
+		- [circle](#circle)
+		- [square](#square)
+		- [triangle](#triangle)
 	- [Typography](#typography)
 		- [font](#font)
 		- [font-face](#font-face)
 		- [font-optimize](#font-optimize)
 		- [font-size](#font-size)
 		- [hide-text](#hide-text)
+		- [truncate-text](#truncate-text)
 - [**Predefined**](#predefined)
 	- [Box Sizing](#box-sizing)
 	- [Sticky Footer](#sticky-footer)
