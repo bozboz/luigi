@@ -1,5 +1,22 @@
 #Changelog
 
+##1.3.0 (2014-03-11)
+
+- Removing delay from `transition` mixin
+- Updating transition to transform in transform mixin
+- Additon of `gradient-radial()` mixin
+- Updating default breakpoints to be animals
+- Converting modular classes to silent placeholders
+- Normalize updated to v3
+- Standard gradient mixin update
+- Abstracting vendors & prefixes out to base vars
+- Addition of `color-alpha()` mixin
+- `css-triangle()` renamed to `triangle()`
+- Addtion of new `_shapes.scss` whcih contains `square()`, `circle()` and `triangle()` mixins
+- Addition of `truncate-text()` mixin
+- `sache.json` added to enable Luigi to be listed on [Sache.in](http://www.sache.in/)
+- Addition of `-webkit-backface-visibility: hidden;` to transition mixin to combat opacity issues
+
 ##1.2.1 (2014-01-28)
 
 - Wrong variable name referenced in _image.scss

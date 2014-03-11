@@ -1,8 +1,3 @@
-> TODO:
->
-> - Add info for the new gradient-radial mixin (usage: @include gradient-radial(farthest-corner, circle, center center, rgba(255,0,0,0.5), #333, orange))
-> - Add info for circle and square mixin
-
 #Luigi
 
 *Jump to the [index](#index) to everything that is included.*
@@ -147,6 +142,7 @@ This file contains many mixins that require vendor prefixes to achieve what have
 - [box-sizing](#box-sizing)
 - [color-alpha](#color-alpha)
 - [gradient](#gradient)
+- [gradient-radial](#gradient-radial)
 - [opacity](#opacity)
 - [transition && transition-property](#transition--transition-property)
 - [transform && transform-property](#transform--transform-property)
@@ -284,7 +280,7 @@ Output:
 
 ####gradient
 
-Allows creation of background gradients without endless amounts of vendor prefixing. Can cater for horizontal, vertical or diagonal gradients. Radial gradients will need to be [manually generated](http://www.colorzilla.com/gradient-editor/)
+Allows creation of background gradients without endless amounts of vendor prefixing. Can cater for horizontal, vertical or diagonal gradients. See also [radial gradients](#gradient-radial) mixin.
 
 Mixin:
 
@@ -305,6 +301,41 @@ Usage:
 	}
 
 *Omitting output due to large amounts of code.- see the [mixin](mixins/_css3.scss) for more detail*
+
+####gradient-radial
+
+This mixin is for creating a radial gradient.
+
+Mixin:
+	
+	gradient-radial($size, $shape, $position, $fallback, $colors...)
+
+**$size**: Size describing how big the ending shape must be. The possible options are: **closest-side**, **closest-corner**, **farthest-side**, **farthest-corner**
+
+**$shape**: The gradient's shape. Can be **circle** or **ellipse**
+
+**$position**: The position of the gradient in the element
+
+**$fallback**: Fallback background color for old browsers
+
+**$colors**: The sequence of colors
+
+Usage:
+
+	.class {
+		@include gradient-radial(farthest-corner, circle, center center, #f00, rgba(255,0,0,0.5), #333, orange)
+	}
+
+Output:
+
+	.class {
+		background: #f00;
+		background: -webkit--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
+		background: -moz--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
+		background: -o--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
+		background: -ms--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
+		background: radial-gradient(farthest-corner circle at center center, rgba(255, 0, 0, 0.5), #333333, orange);
+	}
 
 ####opacity
 
@@ -403,7 +434,7 @@ Usage:
 Output:
 
 	.class {
-	  	-webkit-transform: skew(35deg);
+		-webkit-transform: skew(35deg);
 		-moz-transform: skew(35deg);
 		-ms-transform: skew(35deg);
 		-o-transform: skew(35deg);
@@ -772,15 +803,69 @@ Output:
 
 Defines mixins for making shapes with less code.
 
-- [css-triangle](#css-triangle)
+- [circle](#circle)
+- [square](#square)
+- [triangle](#triangle)
 
-####css-triangle
+####circle
+
+The easiest and quickiest way to do circle. This mixin can be used on slider pagination.
+
+Mixin:
+	
+	circle($size)
+
+**$size**: The diameter of the circle
+
+Usage:
+
+	.class {
+		@include circle(10px);
+	}
+
+Output:
+
+	.class {
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		-moz-background-clip: padding;
+		-webkit-background-clip: padding-box;
+		background-clip: padding-box;
+		width: 10px;
+		height: 10px;
+	}
+
+
+####square
+
+This creates a regular quadrilateral (four equal sides and four equal angles - 90&deg;).
+
+Mixin:
+	
+	square($size)
+
+**$size**: The size of the square
+
+Usage:
+
+	.class {
+		@include square(10px);
+	}
+
+Output:
+
+	.class {
+		width: 10px;
+		height: 10px;
+	}
+
+####triangle
 
 This makes the element a css triangle - for use as a pointer with the `:after` or `:before` pseudo element
 
 Mixin:
 
-	css-triangle($direction: down, $size: 20px, $color: #000)
+	triangle($direction: down, $size: 20px, $color: #000)
 
 **$direction**: what direction the arrow points (up/down/left/right)
 
@@ -791,7 +876,7 @@ Mixin:
 Usage:
 
 	.class:after {
-		@include css-triangle(up, 10px, #fff);
+		@include triangle(up, 10px, #fff);
 		content: '';
 	}
 
@@ -1055,6 +1140,7 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [box-sizing](#box-sizing)
 		- [color-alpha](#color-alpha)
 		- [gradient](#gradient)
+		- [gradient-radial](#gradient-radial)
 		- [opacity](#opacity)
 		- [transition && transition-property](#transition--transition-property)
 		- [transform && transform-property](#transform--transform-property)
@@ -1077,7 +1163,9 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [bp](#bp)
 		- [img-responsive](#img-responsive)
 	- [Shapes](#shapes)
-		- [css-triangle](#css-triangle)
+		- [circle](#circle)
+		- [square](#square)
+		- [triangle](#triangle)
 	- [Typography](#typography)
 		- [font](#font)
 		- [font-face](#font-face)
