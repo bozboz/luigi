@@ -27,8 +27,8 @@
 }
 
 @mixin color-alpha($theme, $alpha: 0.5, $property: 'background-color') {
-	#{$property}: nth($theme, 1); //fallback
-	#{$property}: rgba(nth($theme, 1), $alpha);
+	#{$property}: $theme; //fallback
+	#{$property}: rgba($theme, $alpha);
 }
 
 
