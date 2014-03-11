@@ -5,8 +5,8 @@
 }
 
 // Simple SCSS mixin to create CSS triangles
-// Example: @include css-triangle(up, 10px, #fff);
-@mixin css-triangle($direction: down, $size: 20px, $color: #000) {
+// Example: @include triangle(up, 10px, #fff);
+@mixin triangle($direction: down, $size: 20px, $color: #000) {
 	$opposite: up;
 	@if $direction == up {
 		$direction: bottom;
