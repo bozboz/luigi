@@ -62,7 +62,7 @@
 	
 	background: $fallback;
 	@each $vendor in $vendors-no-w3c {
-		background: #{$vendor}-#{$type}-gradient($position, $size $shape, $colors);
+		background: #{$vendor}#{$type}-gradient($position, $size $shape, $colors);
 	}
 	background: #{$type}-gradient($size $shape at $position, $colors);
 }
