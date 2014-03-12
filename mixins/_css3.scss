@@ -86,8 +86,16 @@
 
 @mixin transition-property($attr, $value) {
 	@each $vendor in $vendors-no-ms {
-		#{$vendor}transition-#{$attr}: $value;
+		#{$vendor}transition-#{$attr}: $value; 
 	}
+}
+
+@mixin transition-transform($attr...) {
+	$trans: (transform);
+	-webkit-transition-property: append(-webkit-#{$trans}, $attr, comma);
+	-o-transition-property: append(-webkit-#{$trans}, $attr, comma);
+	transition-property: append(-webkit-#{$trans}, $attr, comma);
+	transition-property: $trans;
 }
 
 @mixin transform($trans) {
