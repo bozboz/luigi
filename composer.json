@@ -1,3 +1,21 @@
 {
-    "name": "bozboz/luigi"
+	"name": "bozboz/luigi",
+	"description": "Luigi is the Scss library developed by the developers at Bozboz and the rest of the world. It takes influence from the most popular of libraries and includes most of the popular mixins, plus some extra Bozboz crafted ones",
+	"keywords": ["layout", "css3", "typography", "sticky footer", "grid", "responsive"],
+	"homepage": "https://github.com/bozboz/luigi",
+	"authors": [
+		{
+			"name": "Mike Street"
+		},
+		{
+			"name": "Joao Augusto"
+		},
+		{
+			"name": "Hugo Darby-Brown"
+		}
+	],
+	"support": {
+        "issues": "https://github.com/bozboz/luigi/issues"
+    },
+    "license": "GPL-2.0"
 }
