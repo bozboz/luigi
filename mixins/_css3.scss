@@ -1,3 +1,26 @@
+
+@mixin keyframes($name){
+    @-webkit-keyframes$name{
+        @content;
+    }
+    @-moz-keyframes$name{
+        @content;
+    }
+    @-o-keyframes$name{
+        @content;
+    }
+    @keyframes$name{
+        @content;
+    }
+}
+
+@mixin animation($animation...) {
+    @each $prefix in $vendors-no-ms {
+    #{$prefix}animation: $animation;
+   }
+}
+
+
 @mixin bg-size($size) {
 	-webkit-background-size: $size; // Safari 3-4
 	background-size: $size; // Chrome, Firefox 4+, IE 9+, Opera, Safari 5+
