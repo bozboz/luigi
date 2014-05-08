@@ -144,7 +144,7 @@ This file contains many mixins that require vendor prefixes to achieve what have
 - [gradient](#gradient)
 - [gradient-radial](#gradient-radial)
 - [opacity](#opacity)
-- [transition && transition-property](#transition--transition-property)
+- [transition && transition-property && transition-transform](#transition--transition-property--transition-transform)
 - [transform && transform-property](#transform--transform-property)
 
 ####bg-size
@@ -307,7 +307,7 @@ Usage:
 This mixin is for creating a radial gradient.
 
 Mixin:
-	
+
 	gradient-radial($size, $shape, $position, $fallback, $colors...)
 
 **$size**: Size describing how big the ending shape must be. The possible options are: **closest-side**, **closest-corner**, **farthest-side**, **farthest-corner**
@@ -362,18 +362,19 @@ Output:
 		zoom: 1;
 	}
 
-####transition && transition-property
+####transition && transition-property && transition-tranform
 
-This handles transitions and being able to override specific transition properties
+This handles transitions and being able to override specific transition properties.
 
 Mixins:
 
 	transition($time: 0.2s, $attr: all, $effect: ease, $webkit-transform: false)
 	transition-property($attr, $value)
+	transition-transform($attr)
 
 **$time**: How long the animation lasts
 
-**$attr**: The attribute to affect (e.g. all, opacity, width)
+**$attr**: The attribute to affect (e.g. all, opacity, width). *Optional in transition-transform mixin*.
 
 **$effect**: What transition effect should be used. See the [W3C Working Draft](http://www.w3.org/TR/css3-transitions/#transition-timing-function-property) for all options.
 
@@ -387,6 +388,10 @@ Usage:
 
 	.context .class {
 		@include transition-property(duration, 0.8s);
+	}
+
+	.another-context .class {
+		@include transition-transform(opacity);
 	}
 
 Output:
@@ -403,6 +408,13 @@ Output:
 		-moz-transition-duration: 0.8s;
 		-o-transition-duration: 0.8s;
 		transition-duration: 0.8s
+	}
+
+	.another-context .class {
+		-webkit-transition-property: -webkit-transform, opacity;
+		-o-transition-property: -webkit-transform, opacity;
+		transition-property: -webkit-transform, opacity;
+		transition-property: transform;
 	}
 
 ####transform && transform-property
@@ -427,8 +439,7 @@ Usage:
 	}
 
 	.context .class {
-		$attributes: transform, opacity;
-		@include transform-property(property, $attributes);
+		@include transform-property(origin, 25% 75%)
 	}
 
 Output:
@@ -442,10 +453,11 @@ Output:
 	}
 
 	.context .class {
-		-webkit-transform-property: -webkit-transform, opacity;
-		-moz-transform-property: -moz-transform, opacity;
-		-o-transform-property: -o-transform, opacity;
-		transform-property: transform, opacity
+		-webkit-transform-origin: 25% 75%;
+		-moz-transform-origin: 25% 75%;
+		-ms-transform-origin: 25% 75%;
+		-o-transform-origin: 25% 75%;
+		transform-origin: 25% 75%;
 	}
 
 ###Grid
@@ -465,6 +477,7 @@ The image mixin file contains:
 - [background-image](#background-image)
 - [image-2x](#image-2x)
 - [sprite](#sprite)
+- [spritesmith](#spritesmith)
 
 ####background-image
 
@@ -560,6 +573,10 @@ Output:
 		height: 20px;
 		background: url("/images/sprite.png") no-repeat 0 0;
 	}
+
+####spritesmith
+
+These mixins are for use with the [gulp.spritesmith](https://github.com/twolfson/gulp.spritesmith) plugin, defining our own so there is no conflict with the original sprite mixin.
 
 ###Layout
 
@@ -812,7 +829,7 @@ Defines mixins for making shapes with less code.
 The easiest and quickiest way to do circle. This mixin can be used on slider pagination.
 
 Mixin:
-	
+
 	circle($size)
 
 **$size**: The diameter of the circle
@@ -841,7 +858,7 @@ Output:
 This creates a regular quadrilateral (four equal sides and four equal angles - 90&deg;).
 
 Mixin:
-	
+
 	square($size)
 
 **$size**: The size of the square
@@ -1142,13 +1159,14 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [gradient](#gradient)
 		- [gradient-radial](#gradient-radial)
 		- [opacity](#opacity)
-		- [transition && transition-property](#transition--transition-property)
+		- [transition && transition-property && transition-transform](#transition--transition-property--transition-transform)
 		- [transform && transform-property](#transform--transform-property)
 	- [Grid](#grid)
 	- [Image](#image)
 		- [background-image](#background-image)
 		- [image-2x](#image-2x)
 		- [sprite](#sprite)
+		- [spritesmith](#spritesmith)
 	- [Layout](#layout)
 		- [abs](#abs)
 		- [columns](#columns)

@@ -1,3 +1,26 @@
+
+@mixin keyframes($name){
+    @-webkit-keyframes$name{
+        @content;
+    }
+    @-moz-keyframes$name{
+        @content;
+    }
+    @-o-keyframes$name{
+        @content;
+    }
+    @keyframes$name{
+        @content;
+    }
+}
+
+@mixin animation($animation...) {
+    @each $prefix in $vendors-no-ms {
+    #{$prefix}animation: $animation;
+   }
+}
+
+
 @mixin bg-size($size) {
 	-webkit-background-size: $size; // Safari 3-4
 	background-size: $size; // Chrome, Firefox 4+, IE 9+, Opera, Safari 5+
@@ -51,7 +74,7 @@
 	}
 
 	background: $end; // Old browsers
-	@each $vendor in $vendors {
+	@each $vendor in $vendors-no-ms {
 		background: #{$vendor}#{$gradient}-gradient($direction, $start 0%, $end 100%);
 	}
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start}', endColorstr='#{$end}',GradientType=#{$ie-type});
@@ -62,7 +85,7 @@
 	
 	background: $fallback;
 	@each $vendor in $vendors-no-w3c {
-		background: #{$vendor}-#{$type}-gradient($position, $size $shape, $colors);
+		background: #{$vendor}#{$type}-gradient($position, $size $shape, $colors);
 	}
 	background: #{$type}-gradient($size $shape at $position, $colors);
 }
@@ -86,8 +109,16 @@
 
 @mixin transition-property($attr, $value) {
 	@each $vendor in $vendors-no-ms {
-		#{$vendor}transition-#{$attr}: $value;
+		#{$vendor}transition-#{$attr}: $value; 
 	}
+}
+
+@mixin transition-transform($attr...) {
+	$trans: (transform);
+	-webkit-transition-property: append(-webkit-#{$trans}, $attr, comma);
+	-o-transition-property: append(-webkit-#{$trans}, $attr, comma);
+	transition-property: append(-webkit-#{$trans}, $attr, comma);
+	transition-property: $trans;
 }
 
 @mixin transform($trans) {
