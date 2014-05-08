@@ -307,7 +307,7 @@ Usage:
 This mixin is for creating a radial gradient.
 
 Mixin:
-	
+
 	gradient-radial($size, $shape, $position, $fallback, $colors...)
 
 **$size**: Size describing how big the ending shape must be. The possible options are: **closest-side**, **closest-corner**, **farthest-side**, **farthest-corner**
@@ -477,6 +477,7 @@ The image mixin file contains:
 - [background-image](#background-image)
 - [image-2x](#image-2x)
 - [sprite](#sprite)
+- [spritesmith](#spritesmith)
 
 ####background-image
 
@@ -572,6 +573,10 @@ Output:
 		height: 20px;
 		background: url("/images/sprite.png") no-repeat 0 0;
 	}
+
+####spritesmith
+
+These mixins are for use with the [gulp.spritesmith](https://github.com/twolfson/gulp.spritesmith) plugin, defining our own so there is no conflict with the original sprite mixin.
 
 ###Layout
 
@@ -824,7 +829,7 @@ Defines mixins for making shapes with less code.
 The easiest and quickiest way to do circle. This mixin can be used on slider pagination.
 
 Mixin:
-	
+
 	circle($size)
 
 **$size**: The diameter of the circle
@@ -853,7 +858,7 @@ Output:
 This creates a regular quadrilateral (four equal sides and four equal angles - 90&deg;).
 
 Mixin:
-	
+
 	square($size)
 
 **$size**: The size of the square
@@ -1161,6 +1166,7 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [background-image](#background-image)
 		- [image-2x](#image-2x)
 		- [sprite](#sprite)
+		- [spritesmith](#spritesmith)
 	- [Layout](#layout)
 		- [abs](#abs)
 		- [columns](#columns)
