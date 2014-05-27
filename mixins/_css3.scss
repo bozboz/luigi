@@ -118,7 +118,7 @@
 	-webkit-transition-property: append(-webkit-#{$trans}, $attr, comma);
 	-o-transition-property: append(-webkit-#{$trans}, $attr, comma);
 	transition-property: append(-webkit-#{$trans}, $attr, comma);
-	transition-property: $trans;
+	transition-property: $trans, $attr;
 }
 
 @mixin transform($trans) {

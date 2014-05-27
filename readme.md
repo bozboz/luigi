@@ -145,7 +145,7 @@ This file contains many mixins that require vendor prefixes to achieve what have
 - [gradient](#gradient)
 - [gradient-radial](#gradient-radial)
 - [opacity](#opacity)
-- [transition && transition-property && transition-transform](#transition--transition-property--transition-transform)
+- [transition && transition-property && transition-transform](#transition--transition-property--transition-tranform)
 - [transform && transform-property](#transform--transform-property)
 
 
@@ -471,7 +471,7 @@ Output:
 		-webkit-transition-property: -webkit-transform, opacity;
 		-o-transition-property: -webkit-transform, opacity;
 		transition-property: -webkit-transform, opacity;
-		transition-property: transform;
+		transition-property: transform, opacity;
 	}
 
 ####transform && transform-property
@@ -1226,7 +1226,7 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [gradient](#gradient)
 		- [gradient-radial](#gradient-radial)
 		- [opacity](#opacity)
-		- [transition && transition-property && transition-transform](#transition--transition-property--transition-transform)
+		- [transition && transition-property && transition-transform](#transition--transition-property--transition-tranform)
 		- [transform && transform-property](#transform--transform-property)
 	- [Grid](#grid)
 	- [Image](#image)

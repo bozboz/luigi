@@ -9,6 +9,7 @@
 - Add `unselectable` placeholder
 - Addition of `spritesmith` mixins for use with gulp
 - Update default animal breakpoints
+- Add missing attribute in 'transition-transform' mixin
 
 
 ##1.3.0 (2014-03-11)
