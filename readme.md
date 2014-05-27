@@ -1,5 +1,7 @@
 #Luigi
 
+##v1.4.0
+
 *Jump to the [index](#index) to everything that is included.*
 
 Luigi is the Scss library developed by the developers at Bozboz and the rest of the world. It takes influence from the most popular of libraries and includes most of the popular mixins, plus some extra Bozboz crafted ones. A full list of libraries and credits can be found in the [appendix](#appendix)
@@ -151,13 +153,13 @@ This file contains many mixins that require vendor prefixes to achieve what have
 
 ####animation
 
-For defining CSS animations 
+For defining CSS animations
 
 Mixin:
 
 	aniamtion($animation)
-	
-**$animation:**	 Parameters for animation declaration 
+
+**$animation:**	 Parameters for animation declaration
 
 Usage
 
@@ -166,15 +168,15 @@ Usage
 	}
 
 Outout
-	
+
 	.class {
 		-webkit-animation: animation-name 1s linear infinte;
 		-moz-animation: animation-name 1s linear infinte;
 		-o-animation: animation-name 1s linear infinte;
 		animation: animation-name 1s linear infinte;
 	}
-	
-	
+
+
 ####bg-size
 
 For specifying the background size.
@@ -312,7 +314,7 @@ Output:
 
 Adds relevent prefixes to keyframes
 
-Mixin 
+Mixin
 
 	keyframes($name) {
 		@content;
@@ -323,7 +325,7 @@ Mixin
 
 ***@content:*** The keyframes declreations
 
-Usage 
+Usage
 	@include keyframes(color-change) {
 		from {
 			color: red;

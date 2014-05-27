@@ -1,5 +1,16 @@
 #Changelog
 
+##1.4.0 (2014-05-27)
+
+- Add `composer.json` and `bower.json`
+- Update vendors used in gradient mixin
+- Create new `transition-transform` mixin
+- Add `animation` mixins
+- Add `unselectable` placeholder
+- Addition of `spritesmith` mixins for use with gulp
+- Update default animal breakpoints
+
+
 ##1.3.0 (2014-03-11)
 
 - Removing delay from `transition` mixin
