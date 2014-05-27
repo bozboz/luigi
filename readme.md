@@ -135,18 +135,46 @@ The mixins folder comprises of:
 *[mixins/_css3.scss](mixins/_css3.scss)*
 
 This file contains many mixins that require vendor prefixes to achieve what have been dubbed as **css3**.
-
+- [animation](#animation)
 - [bg-size](#bg-size)
 - [border-radius-noclip && border-radius](#border-radius-noclip--border-radius)
 - [box-shadow](#box-shadow)
 - [box-sizing](#box-sizing)
 - [color-alpha](#color-alpha)
+- [keyframes](#keyframes)
 - [gradient](#gradient)
 - [gradient-radial](#gradient-radial)
 - [opacity](#opacity)
 - [transition && transition-property && transition-transform](#transition--transition-property--transition-transform)
 - [transform && transform-property](#transform--transform-property)
 
+
+####animation
+
+For defining CSS animations 
+
+Mixin:
+
+	aniamtion($animation)
+	
+**$animation:**	 Parameters for animation declaration 
+
+Usage
+
+	.class {
+		@include animation(animation-name 1s linear infinite);
+	}
+
+Outout
+	
+	.class {
+		-webkit-animation: animation-name 1s linear infinte;
+		-moz-animation: animation-name 1s linear infinte;
+		-o-animation: animation-name 1s linear infinte;
+		animation: animation-name 1s linear infinte;
+	}
+	
+	
 ####bg-size
 
 For specifying the background size.
@@ -278,6 +306,35 @@ Output:
 		background-color: rgba(255, 0, 0, 0.3);
 	}
 
+
+
+####Keyframes
+
+Adds relevent prefixes to keyframes
+
+Mixin 
+
+	keyframes($name) {
+		@content;
+	}
+
+
+***$name:***  The name of the keyframes that you can reference in the animation property
+
+***@content:*** The keyframes declreations
+
+Usage 
+	@include keyframes(color-change) {
+		from {
+			color: red;
+		}
+		to {
+			color: blue;
+		}
+	}
+
+*Omitting output due to large amounts of code.- see the [mixin](mixins/_css3.scss) for more detail*
+
 ####gradient
 
 Allows creation of background gradients without endless amounts of vendor prefixing. Can cater for horizontal, vertical or diagonal gradients. See also [radial gradients](#gradient-radial) mixin.
@@ -330,9 +387,9 @@ Output:
 
 	.class {
 		background: #f00;
-		background: -webkit--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
-		background: -moz--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
-		background: -o--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
+		background: -webkit-radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
+		background: -moz-radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
+		background: -o-radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
 		background: -ms--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
 		background: radial-gradient(farthest-corner circle at center center, rgba(255, 0, 0, 0.5), #333333, orange);
 	}
@@ -663,6 +720,7 @@ This file contains modular classes which can be used in the SCSS or within your 
 - [clearfix](#clearfix)
 - [reset](#reset)
 - [secret-list](#secret-list)
+- [unselectable](#unselectable)
 
 ####class
 
@@ -700,6 +758,13 @@ This allows the semantic use of a `ul` and `li` without the styles.
 **Clearfix, reset and secret-list are all placeholder selectors and should be used with an extend. E.g:**
 
 	@extend %clearfix;
+
+####unselectable
+
+Disables users being able to select, helps with stopping clicks autoselecting areas
+
+
+	@extend %unselectable;
 
 ###Pseudo
 
