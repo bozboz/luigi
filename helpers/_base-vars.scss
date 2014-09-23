@@ -25,6 +25,9 @@ $breakpoints: (
 
 $debug-mode: false !default;
 
+$grid: true !default;
+$grid-defaults:  12, (sm 480px, md 640px, lg 860px) !default;
+
 $image-fallback-extension: 'png' !default;
 $image-path: '/images' !default;
 $image-retina-suffix: '@2x' !default;
