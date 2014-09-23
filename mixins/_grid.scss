@@ -1,66 +1,21 @@
-// When using the grid item mixin, the amount elements in a row should add up to $columns
-// Grid push is irrespective of the above
-
-// .wrapper {
-//   @include grid-container;
-// }
-
-// .sidebar {
-//   @include grid-item(3);
-// }
-// .sidebar-small {
-//   @include grid-width(2);
-// }
-// .content {
-//   @include grid-push(8);
-//   @include grid-width(2);
-// }
+// These Grids only give widths to elements at varying breakpoints
+//   @inlcude 
+//   
 
 
 
-$grids: 12 !default;
-$grid-container: 1024px !default;
-$grid-gutter: 15px !default;
-$grid-percentage-widths: false;
+@mixin create-grids($cols: 12, $bps: (sm 480px, md 640px, lg 860px)) {
 
-$grid-gutter-type: unquote("margin");
-@if $grid-percentage-widths == true {
-		$grid-gutter-type: unquote("padding");
-}
+    @each $bp in $bps {
+        $bp-name: nth($bp, 1);
+        $bp-value: nth($bp, 2); 
 
-@function grid-num($num) {
-	 $number: $num;
-	@if $grid-percentage-widths == true {
-		$number: ($num / $grids) * 100%;
-	} @else {
-		$number: (($grid-container/$grids) * $num);
-		$number: $number - $grid-gutter;
-	}
-
-	@return $number;
-}
-
-@mixin grid-push($space) {
-	$number: grid-num($space);
-	@if $grid-percentage-widths == true {
-		#{$grid-gutter-type}-left: $grid-gutter;
-	} @else {
-		$number: $number + ($grid-gutter * 2);
-	}
-	margin-left: $number;
-}
-
-@mixin grid-container {
-	margin-left: -$grid-gutter;
-	width: $grid-container;
-}
-
-@mixin grid-width($width) {
-	width: grid-num($width);
-}
-
-@mixin grid-item($grid-width) {
-	@include grid-width($grid-width);
-	float: left;
-	#{$grid-gutter-type}-left: $grid-gutter;
+        @media all and (min-width: $bp-value) {
+            @for $i from 1 through $cols {
+                .col-#{$bp-name}-#{$i} {
+                    width: (100% / $cols) * $i;
+                }
+            }
+        }   
+    }
 }
