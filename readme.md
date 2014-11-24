@@ -155,7 +155,7 @@ For defining CSS animations
 
 Mixin:
 
-	aniamtion($animation)
+	animation($animation)
 
 **$animation:**	 Parameters for animation declaration
 
