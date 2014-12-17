@@ -1,9 +1,3 @@
-// These Grids only give widths to elements at varying breakpoints
-//   @inlcude 
-//   
-
-
-
 @mixin create-grids($cols: 12, $bps: (sm 480px, md 640px, lg 860px)) {
 
     @each $bp in $bps {
