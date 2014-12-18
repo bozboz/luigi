@@ -13,7 +13,3 @@
         }   
     }
 }
-
-@if $grid == true {
-    @include create-grids($grid-defaults);
-}
