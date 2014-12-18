@@ -1,5 +1,17 @@
 #Changelog
 
+##1.5.0 (2014-12-18)
+
+- Remove Normalize
+- Remove `font` mixin
+- Update `circle` mixin
+- Remove `abs` mixin
+- Remove vendor prefixes
+- Remove `columns` mixin
+- Remove `Spritesmith` mixin
+- Update `_grid.scss`
+- Remove `_css3.scss`
+
 ##1.4.0 (2014-05-27)
 
 - Add `composer.json` and `bower.json`
