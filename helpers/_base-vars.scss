@@ -39,9 +39,3 @@ $sprite-size: 0 0 !default;
 
 $sticky-footer-height: false !default;
 $sticky-footer-margin: $sticky-footer-height !default;
-
-
-$vendors: '-webkit-' '-moz-' '-ms-' '-o-' '' !default;
-$vendors-no-ms: '-webkit-' '-moz-' '-o-' '' !default;
-$vendors-no-w3c: '-webkit-' '-moz-' '-o-' '-ms-' !default;
-$vendors-placeholder: ':-webkit' '-moz' ':-moz' '-ms' !default;
