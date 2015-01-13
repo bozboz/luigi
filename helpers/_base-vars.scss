@@ -2,26 +2,6 @@ $base-font: Arial,sans-serif !default;
 $base-font-size: 12px !default;
 $base-gutter: 15px !default;
 
-$breakpoints: (
-	'mouse' '(max-width: 1px)',
-	'stoat' '(max-width: 2px)',
-	'badger' '(max-width: 3px)',
-	'woman' '(max-width: 4px)',
-	'man' '(max-width: 5px)',
-	'dophin' '(max-width: 6px)',
-	'tiger' '(max-width: 7px)',
-	'gorilla' '(max-width: 8px)',
-	'kangaroo' '(max-width: 9px)',
-	'deer' '(max-width: 10px)',
-	'hippo' '(max-width: 11px)',
-	'horse' '(max-width: 12px)',
-	'bear' '(max-width: 13px)',
-	'camel' '(max-width: 14px)',
-	'giraffe' '(max-width: 15px)',
-	'elephant' '(max-width: 16px)',
-	'mammoth' '(max-width: 17px)',
-	'whale' '(max-width: 18px)'
-) !default;
 
 $debug-mode: false !default;
 
