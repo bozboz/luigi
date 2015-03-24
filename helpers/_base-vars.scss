@@ -3,8 +3,8 @@ $base-font-size: 12px !default;
 $base-gutter: 20px !default;
 
 $gutter: $base-gutter !default;
-$gap: $gutter*2 !default;
-$grid-gap: $gutter !default;
+$gap: $gutter*2 !default; // Generic space between elements
+$grid-gap: $gutter !default; // Space betweed grid items
 
 $debug-mode: false !default;
 

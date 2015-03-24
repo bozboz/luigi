@@ -1,6 +1,6 @@
 #Changelog
 
-##1.5.0 (2015-03-23)
+##2.0.0 (2015-03-24)
 
 - Update `_grid.scss` mixin
 - Update `circle` mixin
@@ -8,8 +8,8 @@
 - Remove `_css3.scss` file
 - Remove `font` mixin
 - Remove `Spritesmith` mixin
-- Remove Normalize.css
-- Remove vendor prefixes
+- Remove Normalize.css as we use Bower to fetch and install Normalize package
+- Remove vendor prefixes as we use Gulp with auto-prefixer
 
 ##1.4.0 (2014-05-27)
 
@@ -21,7 +21,6 @@
 - Addition of `spritesmith` mixins for use with gulp
 - Update default animal breakpoints
 - Add missing attribute in 'transition-transform' mixin
-
 
 ##1.3.0 (2014-03-11)
 

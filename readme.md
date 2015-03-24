@@ -1,4 +1,4 @@
-#Luigi (v1.5.0)
+#Luigi (v2.0.0)
 
 *Jump to the [index](#index) to everything that is included.*
 
