@@ -1,16 +1,15 @@
 #Changelog
 
-##1.5.0 (2014-12-18)
+##1.5.0 (2015-03-23)
 
-- Remove Normalize
-- Remove `font` mixin
+- Update `_grid.scss` mixin
 - Update `circle` mixin
-- Remove `abs` mixin
-- Remove vendor prefixes
-- Remove `columns` mixin
+- Update `abs` mixin
+- Remove `_css3.scss` file
+- Remove `font` mixin
 - Remove `Spritesmith` mixin
-- Update `_grid.scss`
-- Remove `_css3.scss`
+- Remove Normalize.css
+- Remove vendor prefixes
 
 ##1.4.0 (2014-05-27)
 
@@ -44,7 +43,7 @@
 ##1.2.1 (2014-01-28)
 
 - Wrong variable name referenced in _image.scss
-
+ 
 ##1.2.0 (2014-01-28)
 
 - Added _image.scss which includes
