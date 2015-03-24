@@ -1,21 +1,21 @@
 @mixin abs-tl($top: $base-gutter, $left: $base-gutter) {
-	@include abs;
-	top: $top;
 	left: $left;
+	position: absolute;
+	top: $top;
 }
 @mixin abs-tr($top: $base-gutter, $right: $base-gutter) {
-	@include abs;
-	top: $top;
+	position: absolute;
 	right: $right;
+	top: $top;
 }
 @mixin abs-bl($bottom: $base-gutter, $left: $base-gutter) {
-	@include abs;
 	bottom: $bottom;
 	left: $left;
+	position: absolute;
 }
 @mixin abs-br($bottom: $base-gutter, $right: $base-gutter) {
-	@include abs;
 	bottom: $bottom;
+	position: absolute;
 	right: $right;
 }
 
