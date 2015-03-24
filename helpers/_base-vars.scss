@@ -1,7 +1,10 @@
 $base-font: Arial,sans-serif !default;
 $base-font-size: 12px !default;
-$base-gutter: 15px !default;
+$base-gutter: 20px !default;
 
+$gutter: $base-gutter !default;
+$gap: $gutter*2 !default;
+$grid-gap: $gutter !default;
 
 $debug-mode: false !default;
 
