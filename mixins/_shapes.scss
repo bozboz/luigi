@@ -1,7 +1,7 @@
 @mixin circle($size) {
-	@include border-radius($size / 2);
-	width: $size;
+	border-radius: 50%;
 	height: $size;
+	width: $size;
 }
 
 // Simple SCSS mixin to create CSS triangles
@@ -30,6 +30,6 @@
 }
 
 @mixin square($size) {
-	width: $size;
 	height: $size;
+	width: $size;
 }

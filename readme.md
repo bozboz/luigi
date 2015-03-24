@@ -1,4 +1,4 @@
-#Luigi (v1.4.0)
+#Luigi (v2.0.0)
 
 *Jump to the [index](#index) to everything that is included.*
 
@@ -22,7 +22,6 @@ The helpers folder includes the following files:
 
 - [Base Vars](#base-vars)
 - [Debug](#debug)
-- [Normalize](#normalize)
 - [Print](#print)
 
 ###Base Vars
@@ -85,13 +84,6 @@ Used with the [image-2x](#image-2x) mixing in the image file to set the original
 
 These are for the sticky footer predefined file - read about the [Sticky Footer](#sticky-footer).
 
-	$vendors: '-webkit-' '-moz-' '-ms-' '-o-' '' !default;
-	$vendors-no-ms: '-webkit-' '-moz-' '-o-' '' !default;
-	$vendors-no-w3c: '-webkit-' '-moz-' '-o-' '-ms-' !default;
-	$vendors-placeholder: ':-webkit' '-moz' ':-moz' '-ms' !default;
-
-Vendor arrays used for the [CSS3](#css3) mixins.
-
 ###Debug
 
 *[helpers/_debug.scss](helpers/_debug.scss)*
@@ -104,12 +96,6 @@ This can be enabled by:
 
 This originates from Inuit (see [Appendix 2.1](#1-inuit))
 
-###Normalize
-
-*[helpers/_normalize.scss](helpers/_normalize.scss)*
-
-This is a slightly modified version of normalize from necolas (see [Appendix 2.2](#2-normalize)). It has `$base-font` and `$base-gutter` scattered throughout.
-
 ###Print
 
 *[helpers/_print.scss](helpers/_print.scss)*
@@ -120,7 +106,6 @@ This is a basic print stylesheet - taken from Stu Robson's sassifaction (see [Ap
 
 The mixins folder comprises of:
 
-- [CSS3](#css3)
 - [Grid](#grid)
 - [Image](#image)
 - [Layout](#layout)
@@ -130,400 +115,23 @@ The mixins folder comprises of:
 - [Shapes](#shapes)
 - [Typography](#typography)
 
-###CSS3
-
-*[mixins/_css3.scss](mixins/_css3.scss)*
-
-This file contains many mixins that require vendor prefixes to achieve what have been dubbed as **css3**.
-- [animation](#animation)
-- [bg-size](#bg-size)
-- [border-radius-noclip && border-radius](#border-radius-noclip--border-radius)
-- [box-shadow](#box-shadow)
-- [box-sizing](#box-sizing)
-- [color-alpha](#color-alpha)
-- [keyframes](#keyframes)
-- [gradient](#gradient)
-- [gradient-radial](#gradient-radial)
-- [opacity](#opacity)
-- [transition && transition-property && transition-transform](#transition--transition-property--transition-tranform)
-- [transform && transform-property](#transform--transform-property)
-
-
-####animation
-
-For defining CSS animations
-
-Mixin:
-
-	aniamtion($animation)
-
-**$animation:**	 Parameters for animation declaration
-
-Usage
-
-	.class {
-		@include animation(animation-name 1s linear infinite);
-	}
-
-Outout
-
-	.class {
-		-webkit-animation: animation-name 1s linear infinte;
-		-moz-animation: animation-name 1s linear infinte;
-		-o-animation: animation-name 1s linear infinte;
-		animation: animation-name 1s linear infinte;
-	}
-
-
-####bg-size
-
-For specifying the background size.
-
-Mixin:
-
-	bg-size($size)
-
-**$size**: The size of the background (see [CSS3 Info](http://www.css3.info/preview/background-size/) for details of how to use it)
-
-Usage:
-
-	.class {
-		@include bg-size(100%);
-	}
-
-Output:
-
-	.class {
-		-webkit-background-size: 100%;
-		background-size: 100%;
-	}
-
-####border-radius-noclip && border-radius
-
-The `noclip` mixin works the same as `border-radius` but without the background-clip declarations.
-
-Mixin:
-
-	border-radius($radius)
-	border-radius-noclip($radius)
-
-**$radius**: Parameters of the required border radius
-
-Usage:
-
-	.class {
-		@include border-radius(10px);
-	}
-	.class-alt {
-		@include border-radius-noclip(10px 15px 5px 10px);
-	}
-
-Output:
-
-	.class {
-		-webkit-border-radius: 10px;
-		border-radius: 10px;
-		-moz-background-clip: padding;
-		-webkit-background-clip: padding-box;
-		background-clip: padding-box;
-	}
-
-	.class-alt {
-		-webkit-border-radius: 10px 15px 5px 10px;
-		border-radius: 10px 15px 5px 10px;
-	}
-
-####box-shadow
-
-Mixin:
-
-	box-shadow($shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3))
-
-**$shadow**: Box shadow parameters - [CSS3 Generator](http://css3generator.com/) can be particularly helpful
-
-Usage:
-
-	.class {
-		@include box-shadow();
-	}
-
-Output:
-
-	.class {
-		-webkit-box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3);
-		box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3);
-	}
-
-####box-sizing
-
-Allows redefining the box-model on elements
-
-Mixin:
-
-	box-sizing($box: border-box)
-
-**$box**: The box model you wish the element to adopt
-
-Usage:
-
-	.class {
-		@include box-sizing();
-	}
-
-Output:
-
-	.class {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-
-####color-alpha
-
-Provides `rgba` with a property fallback
-
-Mixin:
-
-	color-alpha($theme, $alpha: 0.5, $property: 'background-color')
-
-**$theme**: The colour you wish to make transparent (can be hex or rgb)
-
-**$alpha**: The opacity value (from 0 to 1)
-
-**$property**: The property you wish to apply the `rgba` to (defaults to `background-color`)
-
-
-Usage:
-
-	.class {
-		@include color-alpha(#f00, 0.3);
-	}
-
-Output:
-
-	.class {
-		background-color: #f00;
-		background-color: rgba(255, 0, 0, 0.3);
-	}
-
-
-
-####Keyframes
-
-Adds relevent prefixes to keyframes
-
-Mixin
-
-	keyframes($name) {
-		@content;
-	}
-
-
-***$name:***  The name of the keyframes that you can reference in the animation property
-
-***@content:*** The keyframes declreations
-
-Usage
-	@include keyframes(color-change) {
-		from {
-			color: red;
-		}
-		to {
-			color: blue;
-		}
-	}
-
-*Omitting output due to large amounts of code.- see the [mixin](mixins/_css3.scss) for more detail*
-
-####gradient
-
-Allows creation of background gradients without endless amounts of vendor prefixing. Can cater for horizontal, vertical or diagonal gradients. See also [radial gradients](#gradient-radial) mixin.
-
-Mixin:
-
-	gradient($type, $start, $end, $degrees: false)
-
-**$type**: Can be **h** (horizontal), **v** (vertical) or **d** (diagonal).
-
-**$start**: The gradient start colour
-
-**$end**: The gradient end colour
-
-**$degrees**: If using a **d** type, then what angle should the gradient be
-
-Usage:
-
-	.class {
-		@include gradient(h, #f00, #0f0);
-	}
-
-*Omitting output due to large amounts of code.- see the [mixin](mixins/_css3.scss) for more detail*
-
-####gradient-radial
-
-This mixin is for creating a radial gradient.
-
-Mixin:
-
-	gradient-radial($size, $shape, $position, $fallback, $colors...)
-
-**$size**: Size describing how big the ending shape must be. The possible options are: **closest-side**, **closest-corner**, **farthest-side**, **farthest-corner**
-
-**$shape**: The gradient's shape. Can be **circle** or **ellipse**
-
-**$position**: The position of the gradient in the element
-
-**$fallback**: Fallback background color for old browsers
-
-**$colors**: The sequence of colors
-
-Usage:
-
-	.class {
-		@include gradient-radial(farthest-corner, circle, center center, #f00, rgba(255,0,0,0.5), #333, orange)
-	}
-
-Output:
-
-	.class {
-		background: #f00;
-		background: -webkit-radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
-		background: -moz-radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
-		background: -o-radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
-		background: -ms--radial-gradient(center center, farthest-corner circle, rgba(255, 0, 0, 0.5), #333333, orange);
-		background: radial-gradient(farthest-corner circle at center center, rgba(255, 0, 0, 0.5), #333333, orange);
-	}
-
-####opacity
-
-Handles all vendors for using opacity.
-
-Mixin:
-
-	opacity($opacity: 50)
-
-**$opacity**: A number between 0 (transparent) and 100 (opaque)
-
-Usage:
-
-	.class {
-		@include opacity(85);
-	}
-
-Output:
-
-	.class {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="85")";
-		filter: alpha(opacity=85);
-		opacity: 0.85;
-		zoom: 1;
-	}
-
-####transition && transition-property && transition-tranform
-
-This handles transitions and being able to override specific transition properties.
-
-Mixins:
-
-	transition($time: 0.2s, $attr: all, $effect: ease, $webkit-transform: false)
-	transition-property($attr, $value)
-	transition-transform($attr)
-
-**$time**: How long the animation lasts
-
-**$attr**: The attribute to affect (e.g. all, opacity, width). *Optional in transition-transform mixin*.
-
-**$effect**: What transition effect should be used. See the [W3C Working Draft](http://www.w3.org/TR/css3-transitions/#transition-timing-function-property) for all options.
-
-**$webkit-transform**: Whether to add `-webkit-backface-visibility: hidden;` to fix opacity and other rendering issues as [described here](http://stackoverflow.com/questions/15051557/very-difficult-to-solve-and-strange-css3-opacity-transition-issue-must-be-a#answer-17353755)
-
-Usage:
-
-	.class {
-		@include transition();
-	}
-
-	.context .class {
-		@include transition-property(duration, 0.8s);
-	}
-
-	.another-context .class {
-		@include transition-transform(opacity);
-	}
-
-Output:
-
-	.class {
-		-webkit-transition: 0.5s all ease;
-		-moz-transition: 0.5s all ease;
-		-o-transition: 0.5s all ease;
-		transition: 0.5s all ease
-	}
-
-	.context .class {
-		-webkit-transition-duration: 0.8s;
-		-moz-transition-duration: 0.8s;
-		-o-transition-duration: 0.8s;
-		transition-duration: 0.8s
-	}
-
-	.another-context .class {
-		-webkit-transition-property: -webkit-transform, opacity;
-		-o-transition-property: -webkit-transform, opacity;
-		transition-property: -webkit-transform, opacity;
-		transition-property: transform, opacity;
-	}
-
-####transform && transform-property
-
-Much like the transition one, this allows transformations to be used easily
-
-Mixin:
-
-	transform($trans)
-	transform-property($attr, $value)
-
-**$trans**: The transform value
-
-**$attr**: The transform attribute to specifically target
-
-**$value**: The value for the specific attribute
-
-Usage:
-
-	.class {
-		@include transform(skew(35deg));
-	}
-
-	.context .class {
-		@include transform-property(origin, 25% 75%)
-	}
-
-Output:
-
-	.class {
-		-webkit-transform: skew(35deg);
-		-moz-transform: skew(35deg);
-		-ms-transform: skew(35deg);
-		-o-transform: skew(35deg);
-		transform: skew(35deg);
-	}
-
-	.context .class {
-		-webkit-transform-origin: 25% 75%;
-		-moz-transform-origin: 25% 75%;
-		-ms-transform-origin: 25% 75%;
-		-o-transform-origin: 25% 75%;
-		transform-origin: 25% 75%;
-	}
-
 ###Grid
 
 *[mixins/_grid.scss](mixins/_grid.scss)*
 
-The grid system is included but not fully developed - documentation can be seen at the top of the [file](mixins/_grid.scss).
+Mixin:
 
-Full instructions on use will be written once the grid system has been implemented.
+	create-grids($cols: 12, $bps: $breakpoints)
+
+**$cols**: Number of columns
+
+**$breakpoints**: Map of breakpoints
+
+Usage:
+
+	@include create-grids();
+
+_Omitting output due to large amounts of code - see the [mixin](mixins/_grid.scss) for more detail_
 
 ###Image
 
@@ -534,7 +142,6 @@ The image mixin file contains:
 - [background-image](#background-image)
 - [image-2x](#image-2x)
 - [sprite](#sprite)
-- [spritesmith](#spritesmith)
 
 ####background-image
 
@@ -596,7 +203,6 @@ Output:
 	@media (-moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3 / 2), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
 		.class {
 			background-image: url(/images/sprite@2x.png);
-			-webkit-background-size: 50px 100px;
 			background-size: 50px 100px;
 		}
 	}
@@ -630,10 +236,6 @@ Output:
 		height: 20px;
 		background: url("/images/sprite.png") no-repeat 0 0;
 	}
-
-####spritesmith
-
-These mixins are for use with the [gulp.spritesmith](https://github.com/twolfson/gulp.spritesmith) plugin, defining our own so there is no conflict with the original sprite mixin.
 
 ###Layout
 
@@ -670,15 +272,15 @@ Usage:
 Output:
 
 	.class {
+		left: 15px;
 		position: absolute;
 		top: 15px;
-		left: 15px;
 	}
 
 	.class-alt {
-		position: absolute;
 		bottom: 20px;
 		left: 5%;
+		position: absolute;
 	}
 
 ####columns
@@ -702,11 +304,7 @@ Usage:
 Output:
 
 	.class {
-		-webkit-column-count: 3;
-		-moz-column-count: 3;
 		column-count: 3;
-		-webkit-column-gap: 10px;
-		-moz-column-gap: 10px;
 		column-gap: 10px;
 	}
 
@@ -763,7 +361,6 @@ This allows the semantic use of a `ul` and `li` without the styles.
 
 Disables users being able to select, helps with stopping clicks autoselecting areas
 
-
 	@extend %unselectable;
 
 ###Pseudo
@@ -817,7 +414,6 @@ Output:
 This contains several mixins that will aid with responsive web design
 
 - [bp](#bp)
-- [img-responsive](#img-responsive)
 
 ####bp
 
@@ -855,30 +451,6 @@ Output:
 		}
 	}
 
-####img-responsive
-
-This helps make the image responsive
-
-Mixin:
-
-	img-responsive($display: block);
-
-**$display**: What you want the display type to be
-
-Usage:
-
-	.class {
-		@include img-responsive();
-	}
-
-Output:
-
-	.class {
-		display: block;
-		max-width: 100%;
-		height: auto;
-	}
-
 ###Shapes
 
 *[mixins/_responsive.scss](mixins/_responsive.scss)*
@@ -908,11 +480,7 @@ Usage:
 Output:
 
 	.class {
-		-webkit-border-radius: 10px;
-		border-radius: 10px;
-		-moz-background-clip: padding;
-		-webkit-background-clip: padding-box;
-		background-clip: padding-box;
+		border-radius: 50%;
 		width: 10px;
 		height: 10px;
 	}
@@ -937,8 +505,8 @@ Usage:
 Output:
 
 	.class {
-		width: 10px;
 		height: 10px;
+		width: 10px;
 	}
 
 ####triangle
@@ -979,34 +547,11 @@ Output:
 
 Contains mixins which would affect the typography of the website
 
-- [font](#font)
 - [font-face](#font-face)
 - [font-optimize](#font-optimize)
 - [font-size](#font-size)
 - [hide-text](#hide-text)
 - [truncate-text](#truncate-text)
-
-####font
-
-Allows quick setting of some default font families
-
-Mixin:
-
-	font($type)
-
-**$type**: What font you want. Can be hell (Helvtica Neue), sans (Arial), serif (Georgia) or monospace (Monaco)
-
-Usage:
-
-	.class {
-		@include font(monospace)
-	}
-
-Output:
-
-	.class {
-		font-family: "Monaco", "Courier New", monospace;
-	}
 
 ####font-face
 
@@ -1184,22 +729,16 @@ If the margin on the body needs to be more or less than the height of the footer
 ####1. Inuit
 [inuit.css](https://github.com/csswizardry/inuit.css)
 
-####2. Normalize
-[normalize.css](http://necolas.github.io/normalize.css/)
-
-####3. Sassifaction
+####2. Sassifaction
 [sassifaction](https://github.com/sturobson/Sassifaction)
 
-####4. Grids
-[csswizardry-grids](https://github.com/csswizardry/csswizardry-grids)
-
-####5. Sticky Footer
+####3. Sticky Footer
 [Modern Clean CSS "Sticky Footer"](http://mystrd.at/modern-clean-css-sticky-footer/)
 
-####5. UtilityBelt
+####4. UtilityBelt
 [UtilityBelt](https://github.com/dmtintner/UtilityBelt)
 
-###3. Inspiration
+###5. Inspiration
 
  - [Boss](https://github.com/bozboz/boss/)
  - [Preboot.less](http://markdotto.com/bootstrap)
@@ -1212,28 +751,13 @@ If the margin on the body needs to be more or less than the height of the footer
 - [**Helpers**](#helpers)
 	- [Base Vars](#base-vars)
 	- [Debug](#debug)
-	- [Normalize](#normalize)
 	- [Print](#print)
 - [**Mixins**](#mixins)
-	- [CSS3](#css3)
-		- [animation](#animation)
-		- [bg-size](#bg-size)
-		- [border-radius-noclip && border-radius](#border-radius-noclip--border-radius)
-		- [box-shadow](#box-shadow)
-		- [box-sizing](#box-sizing)
-		- [color-alpha](#color-alpha)
-		- [keyframes](#keyframes)
-		- [gradient](#gradient)
-		- [gradient-radial](#gradient-radial)
-		- [opacity](#opacity)
-		- [transition && transition-property && transition-transform](#transition--transition-property--transition-tranform)
-		- [transform && transform-property](#transform--transform-property)
 	- [Grid](#grid)
 	- [Image](#image)
 		- [background-image](#background-image)
 		- [image-2x](#image-2x)
 		- [sprite](#sprite)
-		- [spritesmith](#spritesmith)
 	- [Layout](#layout)
 		- [abs](#abs)
 		- [columns](#columns)
@@ -1247,13 +771,11 @@ If the margin on the body needs to be more or less than the height of the footer
 		- [placeholder](#placeholder)
 	- [Responsive](#responsive)
 		- [bp](#bp)
-		- [img-responsive](#img-responsive)
 	- [Shapes](#shapes)
 		- [circle](#circle)
 		- [square](#square)
 		- [triangle](#triangle)
 	- [Typography](#typography)
-		- [font](#font)
 		- [font-face](#font-face)
 		- [font-optimize](#font-optimize)
 		- [font-size](#font-size)

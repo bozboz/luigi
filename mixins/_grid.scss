@@ -1,66 +1,72 @@
-// When using the grid item mixin, the amount elements in a row should add up to $columns
-// Grid push is irrespective of the above
 
-// .wrapper {
-//   @include grid-container;
-// }
+$breakpoints: (
+	small: (0em, 40em), /* 0, 640px */
+	medium: (40.063em, 64em), /* 641px, 1024px */
+	large: (64.063em, 90em), /* 1025px, 1440px */
+	xlarge: (90.063em, 120em), /* 1441px, 1920px */
+	xxlarge: (120.063em)  /* 1921px */
+) !default;
 
-// .sidebar {
-//   @include grid-item(3);
-// }
-// .sidebar-small {
-//   @include grid-width(2);
-// }
-// .content {
-//   @include grid-push(8);
-//   @include grid-width(2);
-// }
-
-
-
-$grids: 12 !default;
-$grid-container: 1024px !default;
-$grid-gutter: 15px !default;
-$grid-percentage-widths: false;
-
-$grid-gutter-type: unquote("margin");
-@if $grid-percentage-widths == true {
-		$grid-gutter-type: unquote("padding");
-}
-
-@function grid-num($num) {
-	 $number: $num;
-	@if $grid-percentage-widths == true {
-		$number: ($num / $grids) * 100%;
-	} @else {
-		$number: (($grid-container/$grids) * $num);
-		$number: $number - $grid-gutter;
+@function lower-bound($range){
+	@if length($range) <= 0 {
+		@return 0;
 	}
-
-	@return $number;
+	@return nth($range, 1);
 }
 
-@mixin grid-push($space) {
-	$number: grid-num($space);
-	@if $grid-percentage-widths == true {
-		#{$grid-gutter-type}-left: $grid-gutter;
-	} @else {
-		$number: $number + ($grid-gutter * 2);
+@function upper-bound($range) {
+	@if length($range) < 2 {
+		@return 999999999999;
 	}
-	margin-left: $number;
+	@return nth($range, 2);
 }
 
-@mixin grid-container {
-	margin-left: -$grid-gutter;
-	width: $grid-container;
-}
+// Media Queries
+$screen: "only screen" !default;
 
-@mixin grid-width($width) {
-	width: grid-num($width);
-}
+$landscape: "#{$screen} and (orientation: landscape)" !default;
+$portrait: "#{$screen} and (orientation: portrait)" !default;
 
-@mixin grid-item($grid-width) {
-	@include grid-width($grid-width);
-	float: left;
-	#{$grid-gutter-type}-left: $grid-gutter;
+$small-up: $screen !default;
+$small-only: "#{$screen} and (max-width: #{upper-bound(map-get($breakpoints, small))})" !default;
+
+$medium-up: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, medium))})" !default;
+$medium-only: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, medium))}) and (max-width:#{upper-bound(map-get($breakpoints, medium))})" !default;
+
+$large-up: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, large))})" !default;
+$large-only: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, large))}) and (max-width:#{upper-bound(map-get($breakpoints, large))})" !default;
+
+$xlarge-up: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, xlarge))})" !default;
+$xlarge-only: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, xlarge))}) and (max-width:#{upper-bound(map-get($breakpoints, xlarge))})" !default;
+
+$xxlarge-up: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, xxlarge))})" !default;
+$xxlarge-only: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, xxlarge))}) and (max-width:#{upper-bound(map-get($breakpoints, xxlarge))})" !default;
+
+@mixin create-grids($cols: 12, $bps: $breakpoints) {
+	@each $bp-name, $bp-range in $bps {
+		$bp-value: lower-bound($bp-range);
+
+		// this checks to see if the first in map
+		@if $bp-name == nth(map-keys($breakpoints),1) {
+			@for $i from 1 through $cols {
+				.#{$bp-name}-#{$i} {
+					width: (100% / $cols) * $i;
+				}
+			}
+		} @else {
+			@media all and (min-width: $bp-value) {
+				@for $i from 1 through $cols {
+					.#{$bp-name}-#{$i} {
+						width: (100% / $cols) * $i;
+					}
+				}
+			}
+		}
+
+		@media all and (min-width: $bp-value) and (max-width: upper-bound($bp-range)) {
+			.#{$bp-name}--hidden {
+				display: none !important;
+			}
+		}
+	}
 }

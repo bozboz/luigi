@@ -1,17 +1,3 @@
-@mixin font($type) {
-	@if $type == hell {
-		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-		font-weight: 300;
-	} @else if $type == sans {
-		font-family: Arial,"Helvetica Neue", Helvetica, sans-serif;
-	} @else if $type == serif {
-		font-family: "Georgia", "Times New Roman", Times, sans-serif;
-	} @else if $type == monospace {
-		font-family: "Monaco", "Courier New", monospace;
-	}
-
-}
-
 @mixin font-face($font-name, $file, $svg-font-name: false, $weight: 100, $style: normal) {
 	@font-face {
 		$fonts: url('#{$file}.eot?#iefix') format('embedded-opentype'), url('#{$file}.woff') format('woff'), url('#{$file}.ttf')  format('truetype');
@@ -36,6 +22,7 @@
 	$rem-size: $size / 16px;
 	@return #{$rem-size}rem;
 }
+
 @mixin font-size($size) {
 	font-size: $size; //Fallback in px
 	font-size: calculate-rem($size);

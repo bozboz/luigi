@@ -11,8 +11,6 @@
 @import "helpers/base-vars";
 // For debugging website attributes
 @import "helpers/debug";
-// Normalize everything
-@import "helpers/normalize";
 // Base print styles
 @import "helpers/print";
 
@@ -20,9 +18,7 @@
 * Mixin files
 */
 
-// CSS3 - shadows, transform, gradients etc.
-@import "mixins/css3";
-// Grid - Luigi Grid system
+// Grid
 @import "mixins/grid";
 // Image - sprite and 2x mixins
 @import "mixins/image";

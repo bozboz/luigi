@@ -25,29 +25,3 @@
 	height: $height;
 	background: url(#{$image-path}/#{$sprite}) no-repeat $bg-extras;
 }
-
-@mixin spritesmith($sprite) {
-	@include spritesmith-image($sprite);
-	@include spritesmith-position($sprite);
-	@include spritesmith-width($sprite);
-	@include spritesmith-height($sprite);
-}
-
-@mixin spritesmith-width($sprite) {
-	width: nth($sprite, 5);
-}
-
-@mixin spritesmith-height($sprite) {
-	height: nth($sprite, 6);
-}
-
-@mixin spritesmith-position($sprite) {
-	$sprite-offset-x: nth($sprite, 3);
-	$sprite-offset-y: nth($sprite, 4);
-	background-position: $sprite-offset-x  $sprite-offset-y;
-}
-
-@mixin spritesmith-image($sprite) {
-	$sprite-image: nth($sprite, 9);
-	background-image: url(#{$sprite-image});
-}
