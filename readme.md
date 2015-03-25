@@ -40,16 +40,19 @@ The default font size for the website
 
 	$base-gutter: 15px !default;
 
+or
+
+	$gutter: $base-gutter !default;
+
 The default gutter - this is used as the margin bottom for things such as `<p>` and headings
 
-	$breakpoints: (
-		'mouse' '(max-width: 480px)',
-		'cat' '(min-width: 481px) and (max-width: 1023px)',
-		'dog' '(max-width: 1023px)',
-		'whale' '(min-width: 1024px)'
-	) !default;
+	$gap: $gutter*2 !default
 
-This is the default media query breakpoints array for use with the [bp](#bp) mixin. The variables should be animal names.
+Generic space for paddings
+
+	$grid-gap: $gutter !default
+
+Used as the margin for grid items
 
 	$debug-mode: false !default;
 
@@ -83,6 +86,16 @@ Used with the [image-2x](#image-2x) mixing in the image file to set the original
 	$sticky-footer-margin: $sticky-footer-height !default;
 
 These are for the sticky footer predefined file - read about the [Sticky Footer](#sticky-footer).
+
+This is the default media query breakpoints.
+
+	$breakpoints: (
+		small: (0em, 40em),
+		medium: (40.063em, 64em),
+		large: (64.063em, 90em),
+		xlarge: (90.063em, 120em),
+		xxlarge: (120.063em)
+	) !default;
 
 ###Debug
 
@@ -412,44 +425,6 @@ Output:
 *[mixins/_responsive.scss](mixins/_responsive.scss)*
 
 This contains several mixins that will aid with responsive web design
-
-- [bp](#bp)
-
-####bp
-
-This is helpful when using the sass bubbling technique and allows (with the help of the `$breakpoints` variable) a definition of user-friendly sizes
-
-Adapted from CSS Wizarry Grids (see [Appendix 2.4](#4-grids))
-
-Mixin:
-
-	bp($media-query) {
-		@content
-	}
-
-**$media-query**: User-friendly name or px based (e.g. `palm` or `(max-width: 480px)`)
-
-**@content**: The declarations to affect the element
-
-Usage:
-
-	.class {
-		@include bp(desktop) {
-			width: 50%;
-		}
-		width: 25%
-	}
-
-Output:
-
-	.class {
-		width: 25%;
-	}
-	@media only screen and (max-width: 1600px){
-		.class {
-			width:50%;
-		}
-	}
 
 ###Shapes
 
