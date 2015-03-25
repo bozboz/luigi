@@ -119,7 +119,6 @@ This is a basic print stylesheet - taken from Stu Robson's sassifaction (see [Ap
 
 The mixins folder comprises of:
 
-- [CSS3](#css3)
 - [Grid](#grid)
 - [Image](#image)
 - [Layout](#layout)
@@ -128,42 +127,6 @@ The mixins folder comprises of:
 - [Responsive](#responsive)
 - [Shapes](#shapes)
 - [Typography](#typography)
-
-###CSS3
-
-*[mixins/_css3.scss](mixins/_css3.scss)*
-
-This file contains only the keyframe mixin.
-
-- [keyframes](#keyframes)
-
-####Keyframes
-
-Adds relevent prefixes to keyframes
-
-Mixin
-
-	keyframes($name) {
-		@content;
-	}
-
-
-**$name:**  The name of the keyframes that you can reference in the animation property
-
-**@content:** The keyframes declarations
-
-Usage
-
-	@include keyframes(color-change) {
-		from {
-			color: red;
-		}
-		to {
-			color: blue;
-		}
-	}
-
-*Omitting output due to large amounts of code.- see the [mixin](mixins/_css3.scss) for more detail*
 
 ###Grid
 
@@ -765,8 +728,6 @@ If the margin on the body needs to be more or less than the height of the footer
 	- [Debug](#debug)
 	- [Print](#print)
 - [**Mixins**](#mixins)
-	- [CSS3](#css3)
-		- [keyframes](#keyframes)
 	- [Grid](#grid)
 	- [Image](#image)
 		- [background-image](#background-image)
