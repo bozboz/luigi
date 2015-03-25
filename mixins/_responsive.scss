@@ -1,26 +1,3 @@
-@mixin bp($media-query) {
-	$breakpoint-found: false;
-
-	@each $breakpoint in $breakpoints{
-		$name: nth($breakpoint, 1);
-		$declaration: nth($breakpoint, 2);
-
-		@if $media-query == $name and $declaration{
-			$breakpoint-found: true;
-
-			@media only screen and #{$declaration}{
-				@content;
-			}
-		}
-	}
-
-	@if $breakpoint-found == false {
-		@media only screen and #{$media-query}{
-			@content;
-		}
-	}
-}
-
 @mixin img-responsive($display: block) {
 	display: $display;
 	max-width: 100%; // Part 1: Set a maximum relative to the parent
