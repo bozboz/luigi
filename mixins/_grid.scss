@@ -51,25 +51,6 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, xx
 
 /**
  *
- * Alignment for every column in .grid__item
- *
- * CSS Compiled:
- *	.grid__item--top {
- *		align-items: flex-start;
- *	}
- */
-
-@if $enable-flex {
-	@each $flex-align, $flex-value in $flex-alignments {
-		.grid__item--#{$flex-align} {
-			align-items: $flex-value;
-		}
-	}
-}
-
-
-/**
- *
  * @mixin make-grid-columns
  * Creates column sizes for both inline-block and flex grids
  *
@@ -99,27 +80,6 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, xx
 	}
 }
 
-/**
- *
- * @mixin align-flex-item
- * Creates a modifier extending the %flex-item--(top/center/bottom)
- *
- * CSS Compiled:
- *	.small-1--top, .small-2--top, .small-3--top ... {
- *		@extend %flex-item--top;
- *	}
- */
-
-@mixin align-flex-item($bp-name, $cols) {
-  @each $flex-align, $flex-value in $flex-alignments {
-	@for $i from 1 through $cols {
-		.#{$bp-name}-#{$i}--#{$flex-align} {
-			@extend %flex-item--#{$flex-align};
-		}
-	}
-  }
-}
-
 @mixin create-grids($cols: 12, $bps: $breakpoints) {
 	@each $bp-name, $bp-range in $bps {
 		$bp-value: lower-bound($bp-range);
@@ -137,10 +97,6 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, xx
 			.#{$bp-name}--hidden {
 				display: none !important;
 			}
-		}
-
-		@if $enable-flex {
-			@include align-flex-item($bp-name, $cols);
 		}
 
 	}
