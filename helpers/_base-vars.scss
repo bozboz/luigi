@@ -27,3 +27,11 @@ $breakpoints: (
 	xlarge: (90.063em, 120em), /* 1441px, 1920px */
 	xxlarge: (120.063em)  /* 1921px */
 ) !default;
+
+$flex-alignments: (
+	top: flex-start,
+	center: center,
+	bottom: flex-end,
+) !default;
+
+$flex-grid: true;
