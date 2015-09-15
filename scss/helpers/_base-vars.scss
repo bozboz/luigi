@@ -6,6 +6,8 @@ $gutter: $base-gutter !default;
 $gap: $gutter*2 !default; // Generic space between elements
 $grid-gap: $gutter !default; // Space between grid items
 
+$wrapper: 1200px !default;
+
 $debug-mode: false !default;
 
 $image-fallback-extension: 'png' !default;
@@ -34,4 +36,5 @@ $flex-alignments: (
 	bottom: flex-end,
 ) !default;
 
-$enable-flex: false;
+$enable-flex: false !default;
+
