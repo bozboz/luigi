@@ -72,14 +72,9 @@ $enable-flex: true;
 	}
 }
 
-.grid--no-padding .grid__item,
-.grid--flex--no-padding .grid__item {
+.grid--no-padding > .grid__item,
+.grid--flex--no-padding > .grid__item {
 	padding-left: 0;
-}
-
-.grid--no-padding .grid .grid__item,
-.grid--flex--no-padding .grid .grid__item {
-	padding-left: $gap;
 }
 
 @include create-grids();
