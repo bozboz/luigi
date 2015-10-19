@@ -18,8 +18,18 @@
 	position: absolute;
 	right: $right;
 }
-
 @mixin columns($cols: 2, $gap: $base-gutter) {
 	column-count: $cols;
 	column-gap: $gap;
+}
+@mixin vertical-center($position: relative) {
+	position: $position;
+	top: 50%;
+	transform: translateY(-50%);
+}
+@mixin absolute-middle {
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
