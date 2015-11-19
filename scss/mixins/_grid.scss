@@ -58,7 +58,7 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, xx
  *	.medium-1 {
  *		width: 8.33333%;
  *	}
- *	.grid--flex .medium-1 {
+ *	.grid-flex .medium-1 {
  *		flex: 0 0 8.33333%;
  *	}
  */
@@ -69,7 +69,7 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, xx
 			.#{$bp-name}-#{$i} {
 				width: (100% / $cols) * $i;
 			}
-			.grid--flex .#{$bp-name}-#{$i} {
+			.grid-flex .#{$bp-name}-#{$i} {
 				flex: 0 0 (100% / $cols) * $i;
 			}
 		} @else {

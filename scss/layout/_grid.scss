@@ -20,17 +20,17 @@ $enable-flex: true;
 
 @if $enable-flex {
 
-	.grid--flex {
+	.grid-flex {
 		display: flex;
 		flex-wrap: wrap;
 	}
 
-	.grid--flex--no-padding {
-		@extend .grid--flex;
+	.grid-flex--no-padding {
+		@extend .grid-flex;
 	}
 
 	@each $flex-align, $flex-value in $flex-alignments {
-		.grid--flex--#{$flex-align} {
+		.grid-flex--#{$flex-align} {
 			align-items: $flex-value;
 			display: flex;
 			flex-wrap: wrap;
@@ -66,14 +66,14 @@ $enable-flex: true;
 	}
 
 	@if $enable-flex {
-		.grid--flex & {
+		.grid-flex & {
 			flex: 0 0 100%;
 		}
 	}
 }
 
 .grid--no-padding > .grid__item,
-.grid--flex--no-padding > .grid__item {
+.grid-flex--no-padding > .grid__item {
 	padding-left: 0;
 }
 
