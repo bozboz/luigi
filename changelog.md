@@ -1,5 +1,12 @@
 #Changelog
 
+##2.1.0 (2015-12-16)
+
+- Update folder structure
+- Add flexbox grid
+- Add vertical-center mixin
+- Add absolute-center mixin
+
 ##2.0.0 (2015-03-24)
 
 - Update `_grid.scss` mixin
@@ -42,7 +49,7 @@
 ##1.2.1 (2014-01-28)
 
 - Wrong variable name referenced in _image.scss
- 
+
 ##1.2.0 (2014-01-28)
 
 - Added _image.scss which includes

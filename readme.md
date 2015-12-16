@@ -1,4 +1,4 @@
-#Luigi (v2.0.0)
+#Luigi (v2.1.0)
 
 *Jump to the [index](#index) to everything that is included.*
 
@@ -11,6 +11,7 @@ All mixins are included into the main `_luigi.scss`. This is so in your `app.scs
 **Luigi** is laid out folders categorising the library:
 
 - [**Helpers**](#helpers)
+- [**Layout**](#grid)
 - [**Mixins**](#mixins)
 - [**Predefined**](#predefined)
 
@@ -97,6 +98,18 @@ This is the default media query breakpoints.
 		xxlarge: (120.063em)
 	) !default;
 
+Used to activate the Flex grid
+
+	$enable-flex: false !default;
+
+Flex alignments for Flex grid
+
+	$flex-alignments: (
+		top: flex-start,
+		center: center,
+		bottom: flex-end,
+	) !default;
+
 ###Debug
 
 *[helpers/_debug.scss](helpers/_debug.scss)*
@@ -114,6 +127,61 @@ This originates from Inuit (see [Appendix 2.1](#1-inuit))
 *[helpers/_print.scss](helpers/_print.scss)*
 
 This is a basic print stylesheet - taken from Stu Robson's sassifaction (see [Appendix 2.3](#3-sassifaction)). It applies some very basic layout modifications when printing
+
+##Layout
+
+*[layout/_grid.scss](layout/_grid.scss)*
+
+This will generate the 12 column based grid, using the BEM conventions. Column widths are defined as a percentage of their parent and gutters are fixed at 24px. Use `.grid--no-padding` to remove the gutter.
+
+###Inline Grid
+
+The base grid uses inline-block elements, so you will need to remove he whitespace between the elements. There are different solutions for this. Here at Bozboz, we use HTML Comments as [David Walsh](https://davidwalsh.name/remove-whitespace-inline-block) suggests on the Solution 2.
+
+Usage:
+
+	<div class="grid">
+		<div class="grid__item small-6 medium-3 large-8">...</div>
+		<div class="grid__item small-6 medium-9 large-4">...</div>
+	</div>
+
+	<div class="grid--no-padding">
+		<div class="grid__item small-4 medium-3 large-8">...</div><!--
+	 --><div class="grid__item small-4 medium-5 large-2">...</div><!--
+	 --><div class="grid__item small-4 medium-4 large-2">...</div>
+	</div>
+
+###Flex Grid
+
+Flex Grid extends the inline grid conventions, using `.grid__item` and classes like `.medium-3` or `.large-6`.
+
+Usage:
+
+	<div class="grid-flex">
+		<div class="grid__item large-4">...</div>
+		<div class="grid__item medium-6 large-4">...</div>
+		<div class="grid__item medium-6 large-4">...</div>
+	</div>
+
+Use `.grid-flex--{position}` to align boxes. _{position}_ can be either top, center or bottom.
+
+Usage:
+
+	<div class="grid-flex--center">
+		<div class="grid__item large-4">...</div>
+		<div class="grid__item medium-6 large-4">...</div>
+		<div class="grid__item medium-6 large-4">...</div>
+	</div>
+
+Use `.grid__item--{position}` to align specific box to top, center or bottom.
+
+Usage:
+
+	<div class="grid-flex">
+		<div class="grid__item large-4">...</div>
+		<div class="grid__item--bottom medium-6 large-4">...</div>
+		<div class="grid__item medium-6 large-4">...</div>
+	</div>
 
 ##Mixins
 
@@ -134,17 +202,9 @@ The mixins folder comprises of:
 
 Mixin:
 
-	create-grids($cols: 12, $bps: $breakpoints)
+	This creates the classes to use in the markup for both grids.
 
-**$cols**: Number of columns
-
-**$breakpoints**: Map of breakpoints
-
-Usage:
-
-	@include create-grids();
-
-_Omitting output due to large amounts of code - see the [mixin](mixins/_grid.scss) for more detail_
+_See the [mixin](mixins/_grid.scss) for more detail_
 
 ###Image
 
@@ -258,6 +318,8 @@ The layout mixin file contains:
 
 - [abs](#abs)
 - [columns](#columns)
+- [vertical-center](#vertical-center)
+- [absolute-middle](#absolute-middle)
 
 ####abs
 
@@ -319,6 +381,39 @@ Output:
 	.class {
 		column-count: 3;
 		column-gap: 10px;
+	}
+
+####vertical-center
+
+Align vertically an element to center of a parent element
+
+Mixin:
+
+	vertical-center($position: relative)
+
+Output:
+
+	.class {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+####absolute-middle
+
+Align vertically and horizontally an element to center of a parent element
+
+Mixin:
+
+	absolute-middle()
+
+Output:
+
+	.class {
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 ###Modular
@@ -424,11 +519,29 @@ Output:
 
 *[mixins/_responsive.scss](mixins/_responsive.scss)*
 
-This contains several mixins that will aid with responsive web design
+This contains mixins that will aid with responsive web design
+
+- [img-responsive](#img-responsive)
+
+####img-responsive
+
+Keep an image with same aspect ratio
+
+Mixin:
+
+	img-responsive($display: block)
+
+Output:
+
+	.class {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
 
 ###Shapes
 
-*[mixins/_responsive.scss](mixins/_responsive.scss)*
+*[mixins/_shapes).scss](mixins/_shapes).scss)*
 
 Defines mixins for making shapes with less code.
 
@@ -727,6 +840,9 @@ If the margin on the body needs to be more or less than the height of the footer
 	- [Base Vars](#base-vars)
 	- [Debug](#debug)
 	- [Print](#print)
+- [**Layout**](#grid)
+	- [Inline Grid](#inline-grid)
+	- [Flex Grid](#flex-grid)
 - [**Mixins**](#mixins)
 	- [Grid](#grid)
 	- [Image](#image)
@@ -736,6 +852,8 @@ If the margin on the body needs to be more or less than the height of the footer
 	- [Layout](#layout)
 		- [abs](#abs)
 		- [columns](#columns)
+		- [Vertical Center](#vertical-center)
+		- [Absolute Middle](#absolute-middle)
 	- [Modular](#modular)
 		- [class](#class)
 		- [clearfix](#clearfix)
