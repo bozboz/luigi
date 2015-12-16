@@ -11,7 +11,7 @@ All mixins are included into the main `_luigi.scss`. This is so in your `app.scs
 **Luigi** is laid out folders categorising the library:
 
 - [**Helpers**](#helpers)
-- [**Layout**](#grid)
+- [**Layout**](#layout)
 - [**Mixins**](#mixins)
 - [**Predefined**](#predefined)
 
@@ -27,7 +27,7 @@ The helpers folder includes the following files:
 
 ###Base Vars
 
-*[helpers/_base-vars.scss](helpers/_base-vars.scss)*
+*[helpers/_base-vars.scss](scss/helpers/_base-vars.scss)*
 
 This lays out all the variables that can be overwritten throughout Luigi. Defaults are set here:
 
@@ -65,7 +65,7 @@ Used with the [background-image](#background-image) and [image-2x](#image-2x) to
 
 	$image-path: '/images' !default;
 
-This sets the default image folder for the mixins in [mixins/_images.scss](mixins/_images.scss).
+This sets the default image folder for the mixins in [mixins/_images.scss](scss/mixins/_images.scss).
 
 	$image-retina-suffix: '@2x' !default;
 
@@ -112,7 +112,7 @@ Flex alignments for Flex grid
 
 ###Debug
 
-*[helpers/_debug.scss](helpers/_debug.scss)*
+*[helpers/_debug.scss](scss/helpers/_debug.scss)*
 
 This file outlines any basic problems you might have in your html. Using some advanced selectors it outlines elements with things such as alt tags missing or direct descendants of `ul`s which are not `li`s.
 
@@ -124,13 +124,13 @@ This originates from Inuit (see [Appendix 2.1](#1-inuit))
 
 ###Print
 
-*[helpers/_print.scss](helpers/_print.scss)*
+*[helpers/_print.scss](scss/helpers/_print.scss)*
 
 This is a basic print stylesheet - taken from Stu Robson's sassifaction (see [Appendix 2.3](#3-sassifaction)). It applies some very basic layout modifications when printing
 
 ##Layout
 
-*[layout/_grid.scss](layout/_grid.scss)*
+*[layout/_grid.scss](scss/layout/_grid.scss)*
 
 This will generate the 12 column based grid, using the BEM conventions. Column widths are defined as a percentage of their parent and gutters are fixed at 24px. Use `.grid--no-padding` to remove the gutter.
 
@@ -141,8 +141,8 @@ The base grid uses inline-block elements, so you will need to remove he whitespa
 Usage:
 
 	<div class="grid">
-		<div class="grid__item small-6 medium-3 large-8">...</div>
-		<div class="grid__item small-6 medium-9 large-4">...</div>
+		<div class="grid__item small-6 medium-3 large-8">...</div><!--
+	 --><div class="grid__item small-6 medium-9 large-4">...</div>
 	</div>
 
 	<div class="grid--no-padding">
@@ -198,17 +198,15 @@ The mixins folder comprises of:
 
 ###Grid
 
-*[mixins/_grid.scss](mixins/_grid.scss)*
+*[mixins/_grid.scss](scss/mixins/_grid.scss)*
 
-Mixin:
+This creates the classes to use in the markup for both grids.
 
-	This creates the classes to use in the markup for both grids.
-
-_See the [mixin](mixins/_grid.scss) for more detail_
+_See the [mixin](scss/mixins/_grid.scss) for more detail_
 
 ###Image
 
-*[mixins/_image.scss](mixins/_image.scss)*
+*[mixins/_image.scss](scss/mixins/_image.scss)*
 
 The image mixin file contains:
 
@@ -312,7 +310,7 @@ Output:
 
 ###Layout
 
-*[mixins/_layout.scss](mixins/_layout.scss)*
+*[mixins/_layout.scss](scss/mixins/_layout.scss)*
 
 The layout mixin file contains:
 
@@ -418,9 +416,9 @@ Output:
 
 ###Modular
 
-*[mixins/_modular.scss](mixins/_modular.scss)*
+*[mixins/_modular.scss](scss/mixins/_modular.scss)*
 
-This file contains modular classes which can be used in the SCSS or within your HTML and, as such, do not take parameters. To see what each mixin does - view [modular.scss](mixins/_modular.scss)
+This file contains modular classes which can be used in the SCSS or within your HTML and, as such, do not take parameters. To see what each mixin does - view [modular.scss](scss/mixins/_modular.scss)
 
 - [class](#class)
 - [clearfix](#clearfix)
@@ -473,7 +471,7 @@ Disables users being able to select, helps with stopping clicks autoselecting ar
 
 ###Pseudo
 
-*[mixins/_pseudo.scss](mixins/_pseudo.scss)*
+*[mixins/_pseudo.scss](scss/mixins/_pseudo.scss)*
 
 The pseudo file contains mixins which affect or add a pseudo element(s)
 
@@ -517,7 +515,7 @@ Output:
 
 ###Responsive
 
-*[mixins/_responsive.scss](mixins/_responsive.scss)*
+*[mixins/_responsive.scss](scss/mixins/_responsive.scss)*
 
 This contains mixins that will aid with responsive web design
 
@@ -541,7 +539,7 @@ Output:
 
 ###Shapes
 
-*[mixins/_shapes).scss](mixins/_shapes).scss)*
+*[mixins/_shapes).scss](scss/mixins/_shapes).scss)*
 
 Defines mixins for making shapes with less code.
 
@@ -631,7 +629,7 @@ Output:
 
 ###Typography
 
-*[mixins/_typography.scss](mixins/_typography.scss)*
+*[mixins/_typography.scss](scss/mixins/_typography.scss)*
 
 Contains mixins which would affect the typography of the website
 
