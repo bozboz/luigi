@@ -1,7 +1,6 @@
 .grid {
 	list-style: none;
-	margin: 0;
-	margin-left: -$grid-gap;
+	margin: 0 0 0 #{-$grid-gap};
 	padding: 0 $grid-gap;
 
 	&.wrapper {
