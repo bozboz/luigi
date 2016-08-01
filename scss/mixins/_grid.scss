@@ -71,6 +71,7 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound(map-get($breakpoints, xx
 			}
 			.grid-flex .#{$bp-name}-#{$i} {
 				flex: 0 0 (100% / $cols) * $i;
+				max-width: (100% / $cols) * $i;
 			}
 		} @else {
 			.#{$bp-name}-#{$i} {
