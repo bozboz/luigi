@@ -42,10 +42,10 @@
 // Sticky footer from http://mystrd.at/modern-clean-css-sticky-footer/
 @import "predefined/sticky-footer";
 
-
 /*
-* Layout
-*/
+ * Layout
+ */
 
-// Generates classes to use on the markup
-@import "layout/grid";
+@import "../bower_components/foundation-sites/scss/util/util";
+@import "../bower_components/foundation-sites/scss/global";
+@import "../bower_components/foundation-sites/scss/grid/grid";

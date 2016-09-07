@@ -18,5 +18,8 @@
     "grid",
     "responsive"
   ],
-  "license": "GPL-2.0"
+  "license": "GPL-2.0",
+  "devDependencies": {
+    "foundation-sites": "^6.2.3"
+  }
 }
