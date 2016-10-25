@@ -5,3 +5,25 @@
 
 // Render Grid
 @include foundation-grid;
+
+.grid {
+    @include grid-row(null, null, 100%);
+}
+
+.grid__item {
+    @include grid-column;
+    margin-bottom: $gap;
+
+    &:last-child:not(:first-child) {
+        float: left;
+    }
+}
+
+.grid-flex {
+    @include flex-grid-row(null, null, 100%);
+
+    .grid-item {
+        @include flex-grid-column;
+        margin-bottom: $gap;
+    }
+}
