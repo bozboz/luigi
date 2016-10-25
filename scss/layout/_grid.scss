@@ -22,7 +22,7 @@
 .grid-flex {
     @include flex-grid-row(null, null, 100%);
 
-    .grid-item {
+    .grid__item {
         @include flex-grid-column;
         margin-bottom: $gap;
     }
