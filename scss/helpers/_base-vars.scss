@@ -5,6 +5,7 @@ $base-gutter: 20px !default;
 $gutter: $base-gutter !default;
 $gap: $gutter*2 !default; // Generic space between elements
 $grid-gap: $gutter !default; // Space between grid items
+$luigi-grid: false !default;
 
 $wrapper: 1200px !default;
 

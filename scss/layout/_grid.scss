@@ -6,24 +6,26 @@
 // Render Grid
 @include foundation-grid;
 
-.grid {
-    @include grid-row(null, null, 100%);
-}
-
-.grid__item {
-    @include grid-column;
-    margin-bottom: $gap;
-
-    &:last-child:not(:first-child) {
-        float: left;
+@if ($luigi-grid) {
+    .grid {
+        @include grid-row(null, null, 100%);
     }
-}
-
-.grid-flex {
-    @include flex-grid-row(null, null, 100%);
 
     .grid__item {
-        @include flex-grid-column;
+        @include grid-column;
         margin-bottom: $gap;
+
+        &:last-child:not(:first-child) {
+            float: left;
+        }
+    }
+
+    .grid-flex {
+        @include flex-grid-row(null, null, 100%);
+
+        .grid__item {
+            @include flex-grid-column;
+            margin-bottom: $gap;
+        }
     }
 }
