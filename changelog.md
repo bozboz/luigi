@@ -1,5 +1,10 @@
 #Changelog
 
+##2.2.0 (2016-10-26)
+
+- Replace Luigi grid with Foundation Grid
+- Include Foundation Grid as dependency
+
 ##2.1.0 (2015-12-16)
 
 - Update folder structure

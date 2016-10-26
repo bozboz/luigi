@@ -1,4 +1,4 @@
-#Luigi (v2.1.0)
+#Luigi (v2.2.0)
 
 *Jump to the [index](#index) to everything that is included.*
 
@@ -53,6 +53,10 @@ Generic space for paddings
 
 	$grid-gap: $gutter !default
 
+Include the Luigi grid for older versions:
+
+	$luigi-grid: false !default;
+
 Used as the margin for grid items
 
 	$debug-mode: false !default;
@@ -88,28 +92,6 @@ Used with the [image-2x](#image-2x) mixing in the image file to set the original
 
 These are for the sticky footer predefined file - read about the [Sticky Footer](#sticky-footer).
 
-This is the default media query breakpoints.
-
-	$breakpoints: (
-		small: (0em, 40em),
-		medium: (40.063em, 64em),
-		large: (64.063em, 90em),
-		xlarge: (90.063em, 120em),
-		xxlarge: (120.063em)
-	) !default;
-
-Used to activate the Flex grid
-
-	$enable-flex: false !default;
-
-Flex alignments for Flex grid
-
-	$flex-alignments: (
-		top: flex-start,
-		center: center,
-		bottom: flex-end,
-	) !default;
-
 ###Debug
 
 *[helpers/_debug.scss](scss/helpers/_debug.scss)*
@@ -132,62 +114,12 @@ This is a basic print stylesheet - taken from Stu Robson's sassifaction (see [Ap
 
 *[layout/_grid.scss](scss/layout/_grid.scss)*
 
-This will generate the 12 column based grid, using the BEM conventions. Column widths are defined as a percentage of their parent and gutters are fixed at 24px. Use `.grid--no-padding` to remove the gutter.
-
-###Inline Grid
-
-The base grid uses inline-block elements, so you will need to remove he whitespace between the elements. There are different solutions for this. Here at Bozboz, we use HTML Comments as [David Walsh](https://davidwalsh.name/remove-whitespace-inline-block) suggests on the Solution 2.
-
-Usage:
-
-	<div class="grid">
-		<div class="grid__item small-6 medium-3 large-8">...</div><!--
-	 --><div class="grid__item small-6 medium-9 large-4">...</div>
-	</div>
-
-	<div class="grid--no-padding">
-		<div class="grid__item small-4 medium-3 large-8">...</div><!--
-	 --><div class="grid__item small-4 medium-5 large-2">...</div><!--
-	 --><div class="grid__item small-4 medium-4 large-2">...</div>
-	</div>
-
-###Flex Grid
-
-Flex Grid extends the inline grid conventions, using `.grid__item` and classes like `.medium-3` or `.large-6`.
-
-Usage:
-
-	<div class="grid-flex">
-		<div class="grid__item large-4">...</div>
-		<div class="grid__item medium-6 large-4">...</div>
-		<div class="grid__item medium-6 large-4">...</div>
-	</div>
-
-Use `.grid-flex--{position}` to align boxes. _{position}_ can be either top, center or bottom.
-
-Usage:
-
-	<div class="grid-flex--center">
-		<div class="grid__item large-4">...</div>
-		<div class="grid__item medium-6 large-4">...</div>
-		<div class="grid__item medium-6 large-4">...</div>
-	</div>
-
-Use `.grid__item--{position}` to align specific box to top, center or bottom.
-
-Usage:
-
-	<div class="grid-flex">
-		<div class="grid__item large-4">...</div>
-		<div class="grid__item--bottom medium-6 large-4">...</div>
-		<div class="grid__item medium-6 large-4">...</div>
-	</div>
+This includes the [Foundation Grid](http://foundation.zurb.com/sites/docs/grid.html) and the optional Luigi grid.
 
 ##Mixins
 
 The mixins folder comprises of:
 
-- [Grid](#grid)
 - [Image](#image)
 - [Layout](#layout)
 - [Modular](#modular)
@@ -195,14 +127,6 @@ The mixins folder comprises of:
 - [Responsive](#responsive)
 - [Shapes](#shapes)
 - [Typography](#typography)
-
-###Grid
-
-*[mixins/_grid.scss](scss/mixins/_grid.scss)*
-
-This creates the classes to use in the markup for both grids.
-
-_See the [mixin](scss/mixins/_grid.scss) for more detail_
 
 ###Image
 
@@ -838,11 +762,7 @@ If the margin on the body needs to be more or less than the height of the footer
 	- [Base Vars](#base-vars)
 	- [Debug](#debug)
 	- [Print](#print)
-- [**Layout**](#grid)
-	- [Inline Grid](#inline-grid)
-	- [Flex Grid](#flex-grid)
 - [**Mixins**](#mixins)
-	- [Grid](#grid)
 	- [Image](#image)
 		- [background-image](#background-image)
 		- [image-2x](#image-2x)
