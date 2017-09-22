@@ -2,9 +2,16 @@
 @import "../../../foundation-sites/scss/util/util";
 @import "../../../foundation-sites/scss/global";
 @import "../../../foundation-sites/scss/grid/grid";
+@import "../../../foundation-sites/scss/components/flex";
+@import "../../../foundation-sites/scss/grid/flex-grid";
 
 // Render Grid
-@include foundation-grid;
+@if ($flex-grid) {
+    @include foundation-flex-classes;
+    @include foundation-flex-grid;
+} @else {
+    @include foundation-grid;
+}
 
 @if ($luigi-grid) {
     .grid {
