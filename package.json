@@ -2,9 +2,8 @@
   "name": "@bozboz/luigi",
   "version": "2.2.0",
   "description": "Bozboz Scss Framework",
-  "main": "index.js",
+  "main": "scss/_luigi.scss",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
