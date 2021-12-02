@@ -8,12 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bozboz/luigi.git"
+    "url": "git://github.com/bozboz/luigi.git"
   },
   "author": "bozboz",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bozboz/luigi/issues"
   },
-  "homepage": "https://github.com/bozboz/luigi#readme"
+  "homepage": "https://github.com/bozboz/luigi#readme",
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
+  }
 }
