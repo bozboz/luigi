@@ -17,5 +17,8 @@
   "homepage": "https://github.com/bozboz/luigi#readme",
   "publishConfig": {
     "registry":"https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "foundation-sites": "6.3.1"
   }
 }
