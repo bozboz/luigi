@@ -1,18 +1,24 @@
-#Changelog
+# Changelog
 
-##2.2.0 (2016-10-26)
+## 2.4.0 (2021-12-02)
+- Add git package config
+
+## 2.3.0
+- Allow foundation grid to be switched to flex
+
+## 2.2.0 (2016-10-26)
 
 - Replace Luigi grid with Foundation Grid
 - Include Foundation Grid as dependency
 
-##2.1.0 (2015-12-16)
+## 2.1.0 (2015-12-16)
 
 - Update folder structure
 - Add flexbox grid
 - Add vertical-center mixin
 - Add absolute-center mixin
 
-##2.0.0 (2015-03-24)
+## 2.0.0 (2015-03-24)
 
 - Update `_grid.scss` mixin
 - Update `circle` mixin
