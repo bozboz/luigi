@@ -1,0 +1,19 @@
+{
+  "name": "@bozboz/luigi",
+  "version": "2.2.0",
+  "description": "Bozboz Scss Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bozboz/luigi.git"
+  },
+  "author": "bozboz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bozboz/luigi/issues"
+  },
+  "homepage": "https://github.com/bozboz/luigi#readme"
+}
