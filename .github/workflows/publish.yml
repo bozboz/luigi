@@ -1,7 +1,8 @@
 name: Node.js Package
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - 'v*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest 
@@ -10,8 +11,6 @@ jobs:
       packages: write 
     steps:
       - uses: actions/checkout@v2
-      - name: Set env
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v2
         with:
@@ -20,6 +19,6 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: '@bozboz'
       - run: npm install
-      - run: npm publish --tag $RELEASE_VERSION
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
